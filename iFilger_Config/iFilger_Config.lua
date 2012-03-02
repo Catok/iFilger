@@ -18,17 +18,18 @@ local CdS = 30 					-- Cooldowns
 local PTDBS = 37				-- Player's debuffs/buffs on target 
 local PBS = 37					-- Player buffs 
 local PPS = 42					-- Player's procs 
-local FS = 36					-- Focus debuffs 
+local FS = 35					-- Focus debuffs 
 local TBS = 40					-- Target buffs 
 local TDBS = 46					-- Target debuffs from all 
 local PDBS = 44					-- Player PVP/PVE debuffs 
 
 C["Filger_Panels"] = {
 	["MAGE"] = {
-		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = -195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 100, y = -191, text = "Buffs / Debuffs" },
-		{ name = "iFilgerCooldowns", w = 140, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 		{ name = "iFilgerMageInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
 	},
 	["DEATHKNIGHT"] = {
@@ -257,13 +258,13 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "UP",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37, 
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			Size = CdS, 
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
 			-- Water Elemental Freeze
 			{ spellID = 33395, filter = "CD" },
@@ -289,75 +290,42 @@ C["Filger_Spells"] = {
 			{ spellID = 87023, filter = "ICD", trigger = "DEBUFF", duration = 60 },
 		},	
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Mage Buffs",
 			Enable = true,
-			Direction = "RIGHT",
+			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37, 
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
 			
-			-- Frostfire Bolt aka Glyph of Frostfire
---			{ spellID = 44614, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Slow
-			{ spellID = 31589, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Icy Veins
 			{ spellID = 12472, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Arcane Power
 			{ spellID = 12042, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Arcane Potency
-			{ spellID = 57531, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Ice Block
 			{ spellID = 45438, unitId = "player", caster = "player", filter = "BUFF" }, 
 			-- Invisibility
 			{ spellID = 66, unitId = "player", caster = "all", filter = "BUFF" }, 
 			-- Pyromaniac
 			{ spellID = 34295, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Pyroblast
-			{ spellID = 11366, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			-- Pyroblast!
-			{ spellID = 92315, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			-- Living Bomb
-			{ spellID = 44457, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			-- Ignite
-			{ spellID = 12846, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			-- Impact
-			{ spellID = 12357, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Combustion
-			{ spellID = 11129, unitId = "target", caster = "player", filter = "DEBUFF" }, 
-			-- Critical Mass
-			{ spellID = 22959, unitId = "target", caster = "all", filter = "DEBUFF"},
-			-- Shadow and Flame (Warlock)
-			{ spellID = 17800, unitId = "target", caster = "all", filter = "DEBUFF"},
-			-- Deep Freeze
-			{ spellID = 44572, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Freeze
-			{ spellID = 33395, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Frost Nova
-			{ spellID = 122, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Improved Cone of Cold (root)
-			{ spellID = 83302, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Ring of Frost
-			{ spellID = 82691, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Frostbolt (slow)
---			{ spellID = 116, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 }, 
-			-- Cone of Cold (slow)
---			{ spellID = 120, unitId = "target", caster = "all", filter = "DEBUFF" }, 
-			-- Stolen Time (2T13)
-			{ spellID = 105785, unitId = "player", caster = "player", filter = "BUFF" }, 
+			-- Improved Blink
+			{ spellID = 46989, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Improved Mana Gem
+			{ spellID = 83098, unitId = "player", caster = "player", filter = "BUFF" },
+			
 		},
 		{
 			Name = "Mage Procs",
 			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 60, 
-			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
+			Size = PPS, 
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
 			
 			-- Clearcasting
 			{ spellID = 12536, unitId = "player", caster = "player", filter = "BUFF" },
@@ -375,12 +343,71 @@ C["Filger_Spells"] = {
 			{ spellID = 83074, unitId = "player", caster = "player", filter = "BUFF"},
 			-- Blazing Speed
 			{ spellID = 31642, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Arcane Potency
+			{ spellID = 57531, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Invocation
+			{ spellID = 87098, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incanter's Absorption
+			{ spellID = 44413, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Cauterize	
 			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF" },
 		},
 		{
+			Name = "Target Buffs and Debuffs",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = 37, 
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
+			
+			-- Frostfire Bolt aka Glyph of Frostfire
+--			{ spellID = 44614, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Slow
+			{ spellID = 31589, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Living Bomb
+			{ spellID = 44457, unitId = "target", caster = "player", filter = "DEBUFF" }, 
+			-- Pyroblast
+			{ spellID = 11366, unitId = "target", caster = "player", filter = "DEBUFF" }, 
+			-- Pyroblast!
+			{ spellID = 92315, unitId = "target", caster = "player", filter = "DEBUFF" }, 		
+			-- Ignite
+			{ spellID = 12846, unitId = "target", caster = "player", filter = "DEBUFF" }, 
+			-- Impact
+			{ spellID = 12357, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Combustion
+			{ spellID = 11129, unitId = "target", caster = "player", filter = "DEBUFF" }, 
+			-- Critical Mass
+			{ spellID = 22959, unitId = "target", caster = "all", filter = "DEBUFF"},
+			-- Shadow and Flame (Warlock)
+			{ spellID = 17800, unitId = "target", caster = "all", filter = "DEBUFF"},
+			-- Deep Freeze
+			{ spellID = 44572, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Freeze
+			{ spellID = 33395, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Frost Nova
+			{ spellID = 122, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Shattered Barrier
+			{ spellID = 55080, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Improved Cone of Cold (root)
+			{ spellID = 83302, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Ring of Frost
+			{ spellID = 82691, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Frostbolt (slow)
+--			{ spellID = 116, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 }, 
+			-- Cone of Cold (slow)
+--			{ spellID = 120, unitId = "target", caster = "all", filter = "DEBUFF" }, 
+			-- Stolen Time (2T13)
+			{ spellID = 105785, unitId = "player", caster = "player", filter = "BUFF" }, 
+			-- Blast Wave
+			{ spellID = 11113, unitId = "target", caster = "player", filter = "DEBUFF" },
+		},
+		
+		{
 			Name = "Mage InvertAura",
-			Enable = true, -- i don't want to spam, nor to use it. :)
+			Enable = false, -- i don't want to spam, nor to use it. :)
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
@@ -401,13 +428,13 @@ C["Filger_Spells"] = {
 		{
 			Name = "Focus",  
 			Enable = true,
-			Direction = "LEFT",
+			Direction = "RIGHT",
 			Interval = 2,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 36, 
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
+			Size = FS, 
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 			
 			-- Sheep mage
 			{ spellID = 118, unitId = "focus", caster = "player", filter = "DEBUFF" },
@@ -3119,7 +3146,7 @@ C["Filger_Spells"] = {
 	["TANKS"] = {
 		{
 			Name = "Tanks CDs", -- requested by Nâmi@EU-Culte de la Rive noire 
-			Enable = true,
+			Enable = false,
 			Direction = "HORIZONTAL",
 			Interval = 4,
 			Mode = "ICON",
