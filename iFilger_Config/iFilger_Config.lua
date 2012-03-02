@@ -47,11 +47,11 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["WARLOCK"] = {
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
-		{ name = "iFilgerTargetCCDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target CC Debuff" },
-		{ name = "iFilgerTargetDoTDebuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -100, y = -110, text = "Target DoT Debuff" },
-		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" },
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -150, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["DRUID"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -632,151 +632,15 @@ C["Filger_Spells"] = {
 	},
 	["WARLOCK"] = { ---------------------------------------------------- Warlock
 		{
-			Name = "Warlock Procs",
+			Name = "Cooldown",
 			Enable = true,
-			Direction = "DOWN",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
-
-			-- Temporal Ruin (4set13 bonus)
-			{ spellID = 105786, unitId = "player", caster = "player", filter = "BUFF" },
-			-- 4set11 bonus
-			{ spellID = 89937, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Empowered Imp
-			{ spellID = 47283, unitId = "player", caster = "all", filter = "BUFF" },	
-			-- Demon Soul: Imp
-			{ spellID = 79459, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Demon Soul: Felguard
-			{ spellID = 79462, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Demon Soul: Felhunter
-			{ spellID = 79460, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Eradication
-			{ spellID = 64371, unitId = "player", caster = "player", filter = "BUFF" },	
-			-- Devious Minds
-			{ spellID = 70840, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Improved Soul Fire
-			{ spellID = 85383, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Molten Core
-			{ spellID = 47247, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Decimation
-			{ spellID = 63158, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Backdraft
-			{ spellID = 47258, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Backlash
-			{ spellID = 34936, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Nether Protection
-			{ spellID = 30301, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Nightfall
-			{ spellID = 18095, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Burning Soul
-			{ spellID = 84254, unitId = "player", caster = "player", filter = "BUFF" },
-			--Shadow Trance
-			{ spellID = 17941, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Soulburn / Seelenbrand
-			{ spellID = 74434, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Apocalypse
-			{ spellID = 99232, unitId = "player", caster = "player", filter = "BUFF" },
-		},
-		{
-			Name = "Buffs and Debuffs DPS",
-			Enable = true,
-			Direction = "RIGHT",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerTargetCCDebuff", 0, 22},
-
-			-- Bane of havoc
-			{ spellID = 80240, unitId = "target", caster = "player", filter = "DEBUFF" },	
-			-- Bane of Agony
-			{ spellID = 980, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Bane of Doom
-			{ spellID = 603, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Unstable Affliction
-			{ spellID = 30108, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Shadow Embrace
-			{ spellID = 32395, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Corruption
-			{ spellID = 172, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Immolate
-			{ spellID = 348, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Shadowflame
-			{ spellID = 47960, unitId = "target", caster = "player", filter = "DEBUFF" },
-            -- felstorm
-			{ spellID = 89751, unitId = "pet", caster = "all", filter = "BUFF" },
-		},
-		{
-			Name = "Buffs and Debuffs CC",
-			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerTargetDoTDebuff", 58, 22},
-			
-			-- Curse of the Elements
-			{ spellID = 1490, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Tongues
-			{ spellID = 1714, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Exhaustion
-			{ spellID = 18223, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Curse of Weakness
-			{ spellID = 702, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Fear
-			{ spellID = 5782, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Banish
-			{ spellID = 710, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Haunt
-			{ spellID = 48181, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Seed of Corruption
-			{ spellID = 27243, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Howl of Terror
-			{ spellID = 5484, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Death Coil
-			{ spellID = 6789, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Enslave Demon
-			{ spellID = 1098, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Demon Charge
-			{ spellID = 54785, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Curse of Gul'dan
-			{ spellID = 86000, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Soul Swap
-			{ spellID = 86121, unitId = "player", caster = "player", filter = "BUFF" },		
-			-- Dark Intent
-			{ spellID = 85767, unitId = "target", caster = "player", filter = "BUFF" },
-			-- Soulstone Resurrection
-			{ spellID = 20707, unitId = "target", caster = "player", filter = "BUFF" },	
-
-			-- Other (thx TJ)
-
-
-			-- Curse of the Elements: Jinx (Warlock)
-			{ spellID = 86105, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Earth and Moon (Moonkin)
-			{ spellID = 48506, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Ebon Plaguebringer (DK)
-			{ spellID = 65142, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Master poisoner (Rogue)
-			{ spellID = 93068, unitId = "target", caster = "all", filter = "DEBUFF" },
-		},
-		{
-			Name = "Cooldown",
-			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 33,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 0, 22 },
+			Size = CdS,
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
 			-- Demon Soul
 			{ spellID = 77801, filter = "CD" },
@@ -830,15 +694,163 @@ C["Filger_Spells"] = {
 			{ spellID = 50589, filter = "CD" },
 		},
 		{
-			Name = "Focus",
+			Name = "Warlock Buffs",
 			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
+			
+			-- Demon Soul: Imp
+			{ spellID = 79459, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demon Soul: Felguard
+			{ spellID = 79462, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demon Soul: Felhunter
+			{ spellID = 79460, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demon Soul Succub
+			{ spellID = 79463, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demon Soul Void
+			{ spellID = 79464, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Soul Swap
+			{ spellID = 86121, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dark Intent
+			{ spellID = 85768, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Shadow Ward
+			{ spellID = 6229, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Temporal Ruin (4set13 bonus)
+			{ spellID = 105786, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Warlock Procs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PPS,
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
+			
+			-- 4set11 bonus
+			{ spellID = 89937, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Empowered Imp
+			{ spellID = 47283, unitId = "player", caster = "all", filter = "BUFF" },	
+			-- Eradication
+			{ spellID = 64371, unitId = "player", caster = "player", filter = "BUFF" },	
+			-- Devious Minds
+			{ spellID = 70840, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Improved Soul Fire
+			{ spellID = 85383, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Molten Core
+			{ spellID = 47247, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Decimation
+			{ spellID = 63158, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Backdraft
+			{ spellID = 47258, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Backlash
+			{ spellID = 34936, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nether Protection
+			{ spellID = 30301, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nightfall
+			{ spellID = 18095, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Burning Soul
+			{ spellID = 84254, unitId = "player", caster = "player", filter = "BUFF" },
+			--Shadow Trance
+			{ spellID = 17941, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Soulburn / Seelenbrand
+			{ spellID = 74434, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Apocalypse T12 4P
+			{ spellID = 99232, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demonic Rebirth
+			{ spellID = 88447, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Target Buffs and Debuffs",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PTDBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
+
+			-- Unstable Affliction
+			{ spellID = 30108, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Corruption
+			{ spellID = 172, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Bane of havoc
+			{ spellID = 80240, unitId = "target", caster = "player", filter = "DEBUFF" },	
+			-- Bane of Agony
+			{ spellID = 980, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Bane of Doom
+			{ spellID = 603, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Immolate
+			{ spellID = 348, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Haunt
+			{ spellID = 48181, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Seed of Corruption
+			{ spellID = 27243, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Shadow Embrace
+			{ spellID = 32389, unitId = "target", caster = "player", filter = "DEBUFF" },
+			
+			
+			-- Shadowflame
+			{ spellID = 47960, unitId = "target", caster = "player", filter = "DEBUFF" },
+            -- Felstorm
+			{ spellID = 89751, unitId = "pet", caster = "all", filter = "BUFF" },
+			-- Fear
+			--{ spellID = 5782, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Banish
+			--{ spellID = 710, unitId = "target", caster = "all", filter = "DEBUFF" },
+			
+			-- Howl of Terror
+			{ spellID = 5484, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Death Coil
+			{ spellID = 6789, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Enslave Demon
+			{ spellID = 1098, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Demon Charge
+			{ spellID = 54785, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Curse of Gul'dan
+			{ spellID = 86000, unitId = "target", caster = "player", filter = "DEBUFF" },			
+			-- Curse of Tongues
+			{ spellID = 1714, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of Exhaustion
+			{ spellID = 18223, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of Weakness
+			{ spellID = 702, unitId = "target", caster = "all", filter = "DEBUFF" },
+			
+			-- Other
+			-- Curse of the Elements (Warlock)
+			{ spellID = 1490, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Curse of the Elements: Jinx (Warlock)
+			{ spellID = 86105, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Earth and Moon (Moonkin)
+			{ spellID = 48506, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Ebon Plaguebringer (DK)
+			{ spellID = 65142, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Master poisoner (Rogue)
+			{ spellID = 93068, unitId = "target", caster = "all", filter = "DEBUFF" },
+			
+			-- Dark Intent
+			{ spellID = 85767, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Soulstone Resurrection
+			{ spellID = 20707, unitId = "target", caster = "player", filter = "BUFF" },	
+		},
+		{
+			Name = "Focus",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = FS,
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Bane of havoc
 			{ spellID = 80240, unitId = "focus", caster = "player", filter = "DEBUFF" },	
