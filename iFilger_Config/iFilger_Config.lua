@@ -62,10 +62,11 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["HUNTER"] = {
-		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["ROGUE"] = {
@@ -357,7 +358,7 @@ C["Filger_Spells"] = {
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = TBS, 
+			Size = PTDBS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 			
 			-- Deep Freeze
@@ -975,7 +976,7 @@ C["Filger_Spells"] = {
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = TBS,
+			Size = PTDBS,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 		
 			-- Maim
@@ -1054,14 +1055,18 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "UP",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			Size = CdS,
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
+			-- Kill Shot
+			{ spellID = 53351, filter = "CD" },
+			-- Chimera Shot
+			{ spellID = 53209, filter = "CD" },
 			-- Rapid Fire
 			{ spellID = 3045, filter = "CD" },
 			-- Feign Death
@@ -1070,15 +1075,42 @@ C["Filger_Spells"] = {
 			{ spellID = 19574, filter = "CD" },
 		},
 		{
-			Name = "Hunter Procs",
+			Name = "Hunter Buffs",
 			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 60,
-			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
+			
+			-- Rapid Fire
+			{ spellID = 3045, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Call of the Wild
+			{ spellID = 53434, unitId = "player", caster = "pet", filter = "BUFF" },
+			-- Mend Pet
+			{ spellID = 136, unitId = "pet", caster = "player", filter = "BUFF" },
+			-- Spirit Mend
+			{ spellID = 90361, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Deterrence
+			{ spellID = 19263, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Sniper Training
+			{ spellID = 64420, unitId = "player", caster = "player", filter = "BUFF" },
+			-- The Beast Within
+			{ spellID = 34692, unitId = "player", caster = "player", filter = "BUFF" },
+			
+		},
+		{
+			Name = "Hunter Procs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PPS,
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
 
 			-- Lock and Load
 			{ spellID = 56453, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1086,31 +1118,30 @@ C["Filger_Spells"] = {
 			{ spellID = 6150, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Improved Steady Shot
 			{ spellID = 53224, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Rapid Fire
-			{ spellID = 3045, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sic'Em
-			{ spellID = 89388, unitId = "player", caster = "player", filter = "BUFF" },
+			--{ spellID = 89388, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Ready, Set, Aim
 			{ spellID = 82925, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fire!
 			{ spellID = 82926, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Master Tactician
 			{ spellID = 34837, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of the Wild
-			{ spellID = 53434, unitId = "player", caster = "player", filter = "BUFF" },
-			-- The Beast Within
-			{ spellID = 34692, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Cobra Strikes
+			{ spellID = 53257, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Focus Fire
+			{ spellID = 82692, unitId = "player", caster = "player", filter = "BUFF" },
+			
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Target Buffs and Debuffs",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			Size = PTDBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 
 			-- Wyvern Sting
 			{ spellID = 19386, unitId = "target", caster = "all", filter = "DEBUFF" },
@@ -1126,21 +1157,21 @@ C["Filger_Spells"] = {
 			{ spellID = 53301, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Hunter's Mark
 			{ spellID = 1130, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Marked for Death
+			{ spellID = 88691, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Piercing Shots 
 			{ spellID = 63468, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Sniper Training
-			{ spellID = 64420, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Focus",
 			Enable = true,
-			Direction = "LEFT",
-			IconSide = "LEFT",
-			Interval = 4,
+			Direction = "RIGHT",
+			--IconSide = "LEFT",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
-			Size = 32,
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
+			Size = FS,
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Wyvern Sting
 			{ spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
