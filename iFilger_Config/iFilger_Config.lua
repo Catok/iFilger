@@ -85,12 +85,11 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["PALADIN"] = {
-		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
-		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},	
 	["WARRIOR"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
@@ -1527,13 +1526,13 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "UP",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			Size = CdS,
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
 			-- Divine Plea
 			{ spellID = 54428, filter = "CD" },
@@ -1557,74 +1556,26 @@ C["Filger_Spells"] = {
 			{ spellID = 85696, filter = "CD" },
 		},	
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Paladin Buffs",
 			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
 
 			-- Beacon of Light -- player
 			{ spellID = 53563, unitId = "player", caster = "player", filter = "BUFF" },
-		},
-		{
-			Name = "Beacon of Light focus",
-			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
-
-			-- Beacon of Light -- player
-			{ spellID = 53563, unitId = "focus", caster = "player", filter = "BUFF" },
-			-- Hammer of Justice
-			{ spellID = 853, unitId = "focus", caster = "all", filter = "DEBUFF" },
-			-- Judgement
-			{ spellID = 20271, unitId = "focus", caster = "player", filter = "DEBUFF" },
-		},
-		{
-			Name = "Buffs and Debuffs",
-			Enable = true,
-			Direction = "RIGHT",
-			Interval = 3,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
-
-			-- Beacon of Light
-			{ spellID = 53563, unitId = "target", caster = "player", filter = "BUFF" },
-		},
-		{
-			Name = "Buffs and Debuffs",
-			Enable = true,
-			Direction = "RIGHT",
-			Interval = 3,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
- 
+			-- Inquisition
+			{ spellID = 84963, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Long Arm of the Law
 			{ spellID = 87173, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Beacon of Light -- target
-			{ spellID = 53563, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Judgements of the Pure
-			{ spellID = 53657, unitId = "player", caster = "all", filter = "BUFF" },
+			{ spellID = 53657, unitId = "player", caster = "all", filter = "BUFF", spec = 1 },
 			-- Judgements of the Just
-			{ spellID = 68055, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Hammer of Justice
-			{ spellID = 853, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Seal of Truth Aka Censure
-			{ spellID = 31803, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 68055, unitId = "player", caster = "player", filter = "BUFF" },	
 			-- Divine Illumination
 			{ spellID = 31842, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Divine Plea
@@ -1632,9 +1583,7 @@ C["Filger_Spells"] = {
 			-- Holy Shield
 			{ spellID = 20925, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Divine Protection
-			{ spellID = 498, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Inquisition
-			{ spellID = 84963, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 498, unitId = "player", caster = "player", filter = "BUFF" },	
 			-- Zealotry
 			{ spellID = 85696, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Ardent Defender
@@ -1649,19 +1598,21 @@ C["Filger_Spells"] = {
 			{ spellID = 642, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Holy Radiance
 			{ spellID = 82327, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Speed of Light
+			{ spellID = 85497, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Delayed Judgement - 2T13 Tank
 			{ spellID = 105801, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Paladin Procs",
 			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 60,
-			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
+			Size = PPS, 
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
 
 			-- Grand Crusader
 			{ spellID = 85416, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1675,10 +1626,51 @@ C["Filger_Spells"] = {
 			{ spellID = 94686, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Art of War
 			{ spellID = 87138, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Hand of Light 
+			-- Divine Purpose
 			{ spellID = 90174, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Guardian of Ancient Kings Stack Ret PROC
+			{ spellID = 86700, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Sacred Shield
+			{ spellID = 96263, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Saint's Vigor - 2T13 Heal
 			{ spellID = 105742, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Target Buffs and Debuffs",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PTDBS, 
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
+
+			-- Beacon of Light
+			{ spellID = 53563, unitId = "target", caster = "player", filter = "BUFF" },
+			
+			-- Hammer of Justice
+			{ spellID = 853, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Seal of Truth Aka Censure
+			{ spellID = 31803, unitId = "target", caster = "all", filter = "DEBUFF" },
+		},	
+		{
+			Name = "Focus",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = FS, 
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
+
+			-- Beacon of Light -- player
+			{ spellID = 53563, unitId = "focus", caster = "player", filter = "BUFF" },
+			-- Hammer of Justice
+			{ spellID = 853, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- Repentance
+			{ spellID = 20066, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["WARRIOR"] = {  ---------------------------------------------------- Warrior
