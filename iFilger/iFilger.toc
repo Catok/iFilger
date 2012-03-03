@@ -7,5 +7,7 @@
 ## Version: 5.1
 ## RequiredDeps: iFilger_Config
 ## Notes: Power Aura Like, skinned for Tukui / ElvUI.
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
 
 iFilger.xml

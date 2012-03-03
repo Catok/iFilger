@@ -270,10 +270,31 @@ function iFilger:DisplayActives()
 		-- next
 		index = index + 1
 	end
-	-- Update texture, count, cd, size, opacity, spid
+
+	-- Sort actives
+	if not self.sortedIndex then self.sortedIndex = {} end
+	-- Clear sorted (it would be easier to recreate self.sortedIndex or use a local array but this would not be GC-friendly)
+	for n in pairs(self.sortedIndex) do
+		self.sortedIndex[n] = 999 -- dummy high value
+	end
+	local activeCount = 1
+	for n in pairs(self.actives) do
+		self.sortedIndex[activeCount] = n
+		activeCount = activeCount + 1
+	end
+
+	table.sort(self.sortedIndex)
+
 	local totalWidth = 0
 	index = 1
-	for activeIndex, value in pairs(self.actives) do
+	--for activeIndex, value in pairs(self.actives) do
+	for n in pairs(self.sortedIndex) do
+		if n >= activeCount then
+			break -- sortedIndex may be greater than actives
+		end
+		local activeIndex = self.sortedIndex[n]
+		local value = self.actives[activeIndex] -- Get sorted active
+
 		local aura = self.auras[index]
 
 		aura.spellName = GetSpellInfo( value.spid );
@@ -662,7 +683,7 @@ function iFilger:UpdatesFramesList ()
 		for i = 1, #iFilger["spells"], 1 do
 			local data = iFilger["spells"][i]
 			local frame = CreateFrame("Frame", "iFilgerFrame"..i.."_"..data.Name, UIParent)
---			I.Print("FRAME CREATED:"..data.Name)
+			--I.Print("FRAME CREATED:"..data.Name)
 			frame.Id = i
 			frame.Name = data.Name
 			frame.Direction = data.Direction or "UP"
@@ -697,7 +718,7 @@ function iFilger:UpdatesFramesList ()
 			end
 			if CDFound then frame:RegisterEvent("SPELL_UPDATE_COOLDOWN") end
 			if CDFound then frame:RegisterEvent("SPELL_UPDATE_USABLE") end
-			if targetFound then frame:RegisterEvent("PLAYER_TARGET_CHANGED") end
+			frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
 			frame:RegisterEvent("UNIT_AURA")
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD")
