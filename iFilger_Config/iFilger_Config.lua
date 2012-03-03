@@ -92,9 +92,10 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},	
 	["WARRIOR"] = {
-		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 	},
 	["ALL"] = {
 		{ name = "iFilgerEnhancements", w = 150, h = 20, anchor = "BOTTOMRIGHT", x = -47, y = -284, text = "Enhancements" },
@@ -1675,87 +1676,15 @@ C["Filger_Spells"] = {
 	},
 	["WARRIOR"] = {  ---------------------------------------------------- Warrior
 		{
-			Name = "Warrior Procs",
-			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 60,
-			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
-
-			-- Sudden Death
-			{ spellID = 52437, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Slam!
-			{ spellID = 46916, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Sword and Board
-			{ spellID = 50227, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blood Reserve
-			{ spellID = 64568, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victorious
-			{ spellID = 32216, unitId = "player", caster = "player", filter = "BUFF", absID = true },
-			-- Spell Reflection
-			{ spellID = 23920, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victory Rush
-			{ spellID = 34428, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Shield Block
-			{ spellID = 2565, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Last Stand
-			{ spellID = 12975, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Shield Wall
-			{ spellID = 871, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Deadly Calm
-			{ spellID = 85730, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Inner Rage
-			{ spellID = 1134, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Incite
-			{ spellID = 86627, unitId = "player", caster = "player", filter = "BUFF" },
-		},
-		{
-			Name = "Debuffs",
-			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
-
-			-- Hamstring
-			{ spellID = 1715, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Rend
-			{ spellID = 94009, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Sunder Armor
-			{ spellID = 7386, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Thunder Clap
-			{ spellID = 6343, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Demoralizing Shout
-			{ spellID = 1160, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Charge Stun
-			{ spellID = 7922, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Throwdown Stun
-			{ spellID = 85388, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Shockwave
-			{ spellID = 46968, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Improved Hamstring
-			{ spellID = 23694, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Expose Armor (Rogue)
-			{ spellID = 8647, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Colossus Smash
-			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
-		},
-		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "UP",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			Size = CdS, 
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 			
 			-- Recklesness
 			{ spellID = 1719, filter = "CD" },
@@ -1774,6 +1703,125 @@ C["Filger_Spells"] = {
 			-- Heroic Leap	  
 			{ spellID = 6544, filter = "CD" },   
 		},
+		{
+			Name = "Warrior Buffs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
+			
+			-- Shield Block
+			{ spellID = 2565, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Last Stand
+			{ spellID = 12976, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shield Wall
+			{ spellID = 871, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Deadly Calm
+			{ spellID = 85730, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Recklesness
+			{ spellID = 1719, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Inner Rage
+			{ spellID = 1134, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spell Reflection
+			{ spellID = 23920, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Berserker Rage
+			{ spellID = 18499, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Slaughter
+			{ spellID = 84586, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Enraged Regeneration
+			{ spellID = 55694, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Warrior Procs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PPS, 
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
+
+			-- Sudden Death
+			{ spellID = 52437, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Slam!
+			{ spellID = 46916, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Sword and Board
+			{ spellID = 50227, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blood Reserve
+			{ spellID = 64568, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Victorious
+			{ spellID = 32216, unitId = "player", caster = "player", filter = "BUFF", absID = true },
+			-- Bloodsurge
+			{ spellID = 46916, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Victory Rush
+			{ spellID = 34428, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Thunderstruck
+			{ spellID = 80980, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Battle trance
+			{ spellID = 12964, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incite
+			{ spellID = 86627, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Enrage
+			{ spellID = 14202, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Meat Cleaver
+			{ spellID = 85739, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Executioner
+			{ spellID = 90806, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Rude Interruption
+			{ spellID = 86663, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Target Buffs and Debuffs",
+			Enable = true,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PTDBS, 
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
+
+			-- Hamstring
+			{ spellID = 1715, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Rend
+			{ spellID = 94009, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Colossus Smash
+			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Sunder Armor
+			{ spellID = 7386, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Expose Armor (Rogue)
+			{ spellID = 8647, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Charge Stun
+			{ spellID = 7922, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Throwdown Stun
+			{ spellID = 85388, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Shockwave
+			{ spellID = 46968, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Improved Hamstring
+			{ spellID = 23694, unitId = "target", caster = "all", filter = "DEBUFF" },
+			
+			-- Thunder Clap
+			{ spellID = 6343, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Infected Wounds (Druid)
+			{ spellID = 48484, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+			-- Judgements of the Just (Paladin)
+			{ spellID = 68055, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+			-- Frost Fever (Death Knight)
+			{ spellID = 55095, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+			-- Demoralizing Shout
+			{ spellID = 1160, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Demoralizing Roar (Druid)
+			{ spellID = 99, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+			-- Vindication (Paladin)
+			{ spellID = 26017, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+			-- Curse of Weakness (Warlock)
+			{ spellID = 702, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
+		},	
 	},		
 -------------------------------------------------------------	
 -- Credits to Sapz
