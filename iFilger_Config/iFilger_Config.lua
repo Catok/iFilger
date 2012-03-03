@@ -70,11 +70,11 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["ROGUE"] = {
-		{ name = "iFilgerTargetDebuff", w = 160, h = 20, anchor = "TOPLEFT", x = 37, y = -110, text = "Target Debuff" },
-		{ name = "iFilgerPlayerBuff", w = 160, h = 20, anchor = "TOPRIGHT", x = -42, y = -110, text = "Player Buff" },
-		{ name = "iFilgerProcs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -55, text = "Procs" }, -- Procs LEGENDARY
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "TOPLEFT", x = 204, y = 63, text = "Target Cooldowns" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["PALADIN"] = {
@@ -1183,13 +1183,13 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
+			Direction = "HORIZONTAL",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "TOPLEFT", "iFilgerCooldowns", 0, -22 },
+			Size = CdS,
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
 			-- Sprint
 			{ spellID = 2983, filter = "CD" },
@@ -1211,16 +1211,18 @@ C["Filger_Spells"] = {
 			{ spellID = 1856, filter = "CD" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Rogue Buffs",
 			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
+			Direction = "UP",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
 
+			-- Blade Flurry
+			{ spellID = 13877, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Sprint
 			{ spellID = 2983, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Cloak of Shadows
@@ -1251,32 +1253,57 @@ C["Filger_Spells"] = {
 			{ spellID = 84746, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Deep Insight
 			{ spellID = 84747, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Suffering -- Legendary buff
-			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Nightmare -- Legendary buff
-			{ spellID = 109955, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Shadows of the Destroyer -- Legendary buff
-			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Overkill
+			{ spellID = 58426, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Master of subtlety
+			{ spellID = 31665, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Readiness
+			{ spellID = 74001, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Rogue Procs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 4,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = PPS,
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
+
+			
+			-- Tricks of the Trade
+			--{ spellID = 57934, caster = "all", filter = "ACD", incombat = true },
+			-- Fury of the Destroyer -- Legendary buff
+			{ spellID = 109949, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Vanish
+			{ spellID = 1856, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Cheating death
+			{ spellID = 45182, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Combat Insight
+			{ spellID = 74002, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "Target Buffs and Debuffs",
 			Enable = true,
 			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerTargetDebuff", 0, 22 },
+			Size = PTDBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 
 			-- Cheap shot
-			{ spellID = 1833, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 1833, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Kidney shot
-			{ spellID = 408, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 408, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Blind
-			{ spellID = 2094, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 2094, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Sap
-			{ spellID = 6770, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 6770, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Revealing Strike
+			{ spellID = 84617, size = PTDBS, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Rupture
 			{ spellID = 1943, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Garrote
@@ -1287,32 +1314,42 @@ C["Filger_Spells"] = {
 			{ spellID = 8647, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Dismantle
 			{ spellID = 51722, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Deadly Poison / Tödliches Gift
+			-- Deadly Poison
 			{ spellID = 2818, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Mind-numbing Poison / Gedankenbenebelndes Gift
+			-- Mind-numbing Poison
 			{ spellID = 5760, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Crippling Poison / Verkrüppelndes Gift
+			-- Crippling Poison
 			{ spellID = 3409, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Wound Poison / Wundgift
+			-- Wound Poison
 			{ spellID = 13218, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Find Weakness
 			{ spellID = 91023, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Hemorrhage
-			{ spellID = 16511, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
 			-- Glyph of Hemorrhage 
-			{ spellID = 89775, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },
+			{ spellID = 89775, unitId = "target", caster = "player", filter = "DEBUFF", absID = true  },		
 			-- Vendetta
 			{ spellID = 79140, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Mangle
+			{ spellID = 33876, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Hemorrhage
+			{ spellID = 16511, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			-- Trauma
+			{ spellID = 46857, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Tendon Rip
+			{ spellID = 50271, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Gore
+			{ spellID = 35290, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Stampede (Rhino)
+			{ spellID = 57386, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
 			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
+			Direction = "ROGHT",
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
-			Size = 32,
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", "TOPRIGHT", 0, -22 },
+			Size = FS,
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Blind
 			{ spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },
@@ -1320,23 +1357,6 @@ C["Filger_Spells"] = {
 			{ spellID = 6770, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Gouge
 			{ spellID = 1776, unitId = "focus", caster = "all", filter = "DEBUFF" },
-		},
-		{
-			Name = "Rogue Procs",
-			Enable = true,
-			Direction = "DOWN",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "TOP", "iFilgerProcs", -0, -23 },
-
-			
-			-- Tricks of the Trade
-			{ spellID = 57934, caster = "all", filter = "ACD", incombat = true },
-			-- Fury of the Destroyer -- Legendary buff
-			{ spellID = 109949, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 	},		
 	["SHAMAN"] = { ---------------------------------------------------- Shaman
@@ -2035,7 +2055,7 @@ C["Filger_Spells"] = {
 			-- Suffering -- Legendary buff
 			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nightmare -- Legendary buff
-			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 109955, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Shadows of the Destroyer -- Legendary buff
 			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
 		},
