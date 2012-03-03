@@ -77,6 +77,13 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
+	["SHAMAN"] = {
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
+		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
+	},
 	["PALADIN"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
@@ -84,15 +91,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
 		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
 		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
-	},
-	["SHAMAN"] = {
-		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
-		{ name = "iFilgerCooldowns", w = 160, h = 20, anchor = "BOTTOMRIGHT", x = 153, y = -97, text = "Cooldowns" },
-		{ name = "iFilgerBuffTargetHeal", w = 200, h = 20, anchor = "TOPLEFT", x = 164, y = -268, text = "Heal Buff Target" },
-		{ name = "iFilgerBuffPlayerHeal", w = 200, h = 20, anchor = "TOPRIGHT", x = -164, y = -268, text = "Heal Buff Player" },
-		{ name = "iFilgerFocusBuffs", w = 165, h = 20, anchor = "TOPRIGHT", x = -53, y = 53, text = "Focus Buffs" },
-	},
+	},	
 	["WARRIOR"] = {
 		{ name = "iFilgerProcs", w = 200, h = 21, anchor = "BOTTOMLEFT", x = 195, y = -35, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 200, h = 21, anchor = "TOPLEFT", x = 156, y = -141, text = "Buffs / Debuffs" },
@@ -1361,53 +1360,15 @@ C["Filger_Spells"] = {
 	},		
 	["SHAMAN"] = { ---------------------------------------------------- Shaman
 		{
-			Name = "Self Buffs",
-			Enable = true,
-			Direction = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
-			Size = 32,
-			setPoint = { "BOTTOMRIGHT", "iFilgerBuffPlayerHeal", 0, 24 },
-
-			-- Earth Shield
-			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Riptide
-			{ spellID = 61295, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Lightning Shield
-			{ spellID = 324, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Water Shield
-			{ spellID = 52127, unitId = "player", caster = "player", filter = "BUFF" },
-		},
-		{
-			Name = "Target Buffs",
-			Enable = true,
-			Direction = "RIGHT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
-			Size = 32,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffTargetHeal", 0, 24 },
-
-			-- Earth Shield
-			{ spellID = 974, unitId = "target", caster = "player", filter = "BUFF" },
-			-- Riptide
-			{ spellID = 61295, unitId = "target", caster = "player", filter = "BUFF" },
-			-- Ancestral Fortitude
-			{ spellID = 16236, unitId = "target", caster = "player", filter = "BUFF" },
-			-- Hearthliving
-			{ spellID = 51945, unitId = "target", caster = "player", filter = "BUFF" },
-		},
-		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "UP",
+			Direction = "HORIZONTAL",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
+			Size = CdS,
+			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
 
 			-- Stoneclaw Totem
 			{ spellID = 5730, filter = "CD" },
@@ -1441,15 +1402,42 @@ C["Filger_Spells"] = {
 			{ spellID = 73680, filter = "CD" },
 		},
 		{
+			Name = "Shaman Buffs",
+			Enable = true,
+			Direction = "UP",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+			Size = PBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerPlayerBuff", 0, 22 },
+
+			-- Earth Shield
+			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },		
+			-- Lightning Shield
+			{ spellID = 324, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Water Shield
+			{ spellID = 52127, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Riptide
+			{ spellID = 61295, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shamanistic Rage
+			{ spellID = 30823, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Elemental Mastery
+			{ spellID = 16166, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spiritwalker's Grace
+			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Wolf
+			{ spellID = 2645, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
 			Name = "Shaman Procs",
 			Enable = true,
-			Direction = "RIGHT",
+			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
-			Size = 60,
-			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, -63 },
+			Size = PPS,
+			setPoint = { "BOTTOMRIGHT", "iFilgerProcs", 0, 22 },
 
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1461,36 +1449,50 @@ C["Filger_Spells"] = {
 			{ spellID = 77796, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unleash Life
 			{ spellID = 73685, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Unleash Flame
+			{ spellID = 73683, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nature Guardian
+			{ spellID = 31616, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Lava flows
+			{ spellID = 65264, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Grounding Totem
+			{ spellID = 8178, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Stoneclaw Totem
+			{ spellID = 55277, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Riptide
-			{ spellID = 61295, caster = "all", filter = "ACD", incombat = false },
+			--{ spellID = 61295, caster = "all", filter = "ACD", incombat = false },
 			-- Spirit Link Totem
-			{ spellID = 98008, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 98008, unitId = "player", caster = "player", filter = "BUFF" },			
 			-- Spiritual Stimulus (2T13)
 			{ spellID = 105763, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Timewalker (4T13 heal)
  			{ spellID = 105877, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Buffs and Debuffs",
+			Name = "Target Buffs and Debuffs",
 			Enable = true,
 			Direction = "RIGHT",
-			Interval = 3,
+			Interval = 4,
 			Mode = "ICON",
 			Alpha = 1,
---			BarWidth = 150,
-			Size = 37,
-			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 24 },
+			Size = PTDBS,
+			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 
-			-- Shamanistic Rage
-			{ spellID = 30823, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Elemental Mastery
-			{ spellID = 16166, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Totem
+			-- Earth Shield
+			{ spellID = 974, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Riptide
+			{ spellID = 61295, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Ancestral Fortitude
+			{ spellID = 16236, unitId = "target", caster = "player", filter = "BUFF" },
+			-- Hearthliving
+			{ spellID = 51945, unitId = "target", caster = "player", filter = "BUFF" },
+					
+			-- Searing Totem
 			{ spellID = 77661, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Hex
-			{ spellID = 51514, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 51514, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
-			{ spellID = 76780, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 76780, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Storm Strike
 			{ spellID = 17364, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Earth Shock
@@ -1499,19 +1501,19 @@ C["Filger_Spells"] = {
 			{ spellID = 8056, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Flame Shock
 			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Spiritwalker's Grace
-			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Earthgrab
+			{ spellID = 64695, unitId = "target", caster = "player", filter = "DEBUFF" },		
 		},
 		{
 			Name = "Focus",
 			Enable = true,
-			Direction = "LEFT",
+			Direction = "RIGHT",
 --			IconSide = "LEFT",
-			Interval = 4,
+			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
-			Size = 32,
-			setPoint = { "TOPRIGHT", "iFilgerFocusBuffs", 0, -22 },
+			Size = FS,
+			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Earth Shield
 			{ spellID = 974, unitId = "focus", caster = "player", filter = "BUFF" },
