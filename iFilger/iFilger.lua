@@ -457,7 +457,11 @@ function iFilger:OnEvent(event, unit)
 						end
 						duration = 0
 					elseif data.filter == "ICD" and (not data.spec or data.spec == ptt) then
-						if data.trigger == "BUFF" then
+						if data.spellID == 23694 then
+							local spn
+							spn, _, icon = GetSpellInfo(data.spellID)
+							name, _, _, _, _, _, _, _, _, _, spid = iFilger:UnitDebuff("target", data.spellID, spn, data.absID)
+						elseif data.trigger == "BUFF" then
 							local spn
 							spn, _, icon = GetSpellInfo(data.spellID)
 							name, _, _, _, _, _, _, _, _, _, spid = iFilger:UnitBuff("player", data.spellID, spn, data.absID)

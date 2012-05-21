@@ -14,7 +14,7 @@ C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCoold
 
 --Sizes
 local EnhanceS = 37 			-- Buff from trinkets, racials and others
-local CdS = 30 					-- Cooldowns 
+local CdS = 40 					-- Cooldowns 
 local PTDBS = 37				-- Player's debuffs/buffs on target 
 local PBS = 37					-- Player buffs 
 local PPS = 42					-- Player's procs 
@@ -25,7 +25,7 @@ local PDBS = 44					-- Player PVP/PVE debuffs
 
 C["Filger_Panels"] = {
 	["MAGE"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
@@ -33,28 +33,28 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerMageInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
 	},
 	["DEATHKNIGHT"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		
 	},
 	["PRIEST"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["WARLOCK"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["DRUID"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
@@ -62,7 +62,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["HUNTER"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
@@ -70,7 +70,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["ROGUE"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
@@ -78,21 +78,21 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerRage", w = 165, h = 20, anchor = "CENTER", x = 0, y = -20, text = "Rage Buffs" },
 	},
 	["SHAMAN"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},
 	["PALADIN"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 	},	
 	["WARRIOR"] = {
-		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "CENTER", x = 0, y = -207, text = "Cooldowns" },
+		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
@@ -112,50 +112,48 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Blood Tap
-			{ spellID = 45529, filter = "CD" }, 
+			--{ spellID = 45529, filter = "CD" }, 
 			-- Dark Command
-			{ spellID = 56222, filter = "CD" }, 
+			--{ spellID = 56222, filter = "CD" }, 
 			-- Death Pact
-			{ spellID = 48743, filter = "CD" },
+			--{ spellID = 48743, filter = "CD" },
 			-- Mind Freeze			
 			{ spellID = 47528, filter = "CD" },
 			-- Icebound Fortitude
-			{ spellID = 48792, filter = "CD" }, 
+			--{ spellID = 48792, filter = "CD" }, 
 			-- Empower Rune Weapon
-			{ spellID = 47568, filter = "CD" }, 
-			-- Howling Blast
-			{ spellID = 49184, filter = "CD" }, 
+			--{ spellID = 47568, filter = "CD" }, 
 			-- Death Grip
-			{ spellID = 49576, filter = "CD" }, 
+			--{ spellID = 49576, filter = "CD" }, 
 			-- Raise Dead
-			{ spellID = 46584, filter = "CD" }, 
+			--{ spellID = 46584, filter = "CD" }, 
 			-- Anti-Magic Shell
-			{ spellID = 48707, filter = "CD" }, 
+			--{ spellID = 48707, filter = "CD" }, 
 			-- Death and Decay
-			{ spellID = 43265, filter = "CD" }, 
+			--{ spellID = 43265, filter = "CD" }, 
 			-- Vampiric Blood
-			{ spellID = 55233, filter = "CD" }, 
+			--{ spellID = 55233, filter = "CD" }, 
 			-- Dancing Rune Weapon
-			{ spellID = 49028, filter = "CD" }, 
+			--{ spellID = 49028, filter = "CD" }, 
 			-- Lichborne
-			{ spellID = 49039, filter = "CD" }, 
+			--{ spellID = 49039, filter = "CD" }, 
 			-- Anti-Magic Zone
-			{ spellID = 51052, filter = "CD" }, 
+			--{ spellID = 51052, filter = "CD" }, 
 			-- Summon Gargoyle
-			{ spellID = 49206, filter = "CD" }, 
+			--{ spellID = 49206, filter = "CD" }, 
 			-- Outbreak
-			{ spellID = 77575, filter = "CD" }, 
+			--{ spellID = 77575, filter = "CD" }, 
 			-- Dark Simulacrum
-			{ spellID = 77606, filter = "CD" }, 
+			--{ spellID = 77606, filter = "CD" }, 
 		},	
 		{
 			Name = "DK Buffs",
@@ -253,32 +251,32 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS, 
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Water Elemental Freeze
-			{ spellID = 33395, filter = "CD" },
+			--{ spellID = 33395, filter = "CD" },
 			-- Blast Wave
-			{ spellID = 11113, filter = "CD" },
+			--{ spellID = 11113, filter = "CD" },
 			-- Fire Blast
-			{ spellID = 2136, filter = "CD" },
+			--{ spellID = 2136, filter = "CD" },
 			-- Counterspell
 			{ spellID = 2139, filter = "CD" }, 
 			-- Flame Orb
-			{ spellID = 82731, filter = "CD" }, 
+			--{ spellID = 82731, filter = "CD" }, 
 			-- Mage Ward
-			{ spellID = 543, filter = "CD" }, 
+			--{ spellID = 543, filter = "CD" }, 
 			-- Deep Freeze
 			{ spellID = 44572, filter = "CD" }, 
 			-- Arcane Power -- since 4T13
-			{ spellID = 12042, filter = "CD" }, 
+			--{ spellID = 12042, filter = "CD" }, 
 			-- Icy Veins -- since 4T13
-			{ spellID = 12472, filter = "CD" }, 
+			--{ spellID = 12472, filter = "CD" }, 
 			-- Combustion -- since 4T13
 			{ spellID = 11129, filter = "CD" }, 
 			-- Cauterize
@@ -373,7 +371,7 @@ C["Filger_Spells"] = {
 			-- Ring of Frost
 			{ spellID = 82691, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Frostfire Bolt aka Glyph of Frostfire
---			{ spellID = 44614, unitId = "target", caster = "all", filter = "DEBUFF" },		
+			{ spellID = 44614, unitId = "target", caster = "player", filter = "DEBUFF" },		
 			-- Living Bomb
 			{ spellID = 44457, unitId = "target", caster = "player", filter = "DEBUFF" }, 
 			-- Pyroblast
@@ -442,22 +440,22 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Dispersion
 			{ spellID = 47585, filter = "CD" }, 
 			-- Guardian Spirit
-			{ spellID = 47788, filter = "CD" }, 
+			--{ spellID = 47788, filter = "CD" }, 
 			-- Holy Word: Sanctuary
-			{ spellID = 88686, filter = "CD" }, 
+			--{ spellID = 88686, filter = "CD" }, 
 			-- Inner Focus
-			{ spellID = 89485, filter = "CD" }, 
+			--{ spellID = 89485, filter = "CD" }, 
 			-- Penance
 			--{ spellID = 47540, filter = "CD" }, 
 			-- Circle of Healing
@@ -467,17 +465,17 @@ C["Filger_Spells"] = {
 			-- Psychic Scream
 			--{ spellID = 8122, filter = "CD" }, 
 			-- Shadowfiend
-			{ spellID = 34433, filter = "CD" },
+			--{ spellID = 34433, filter = "CD" },
 			-- Archangel
-			{ spellID = 87151, filter = "CD" },
+			--{ spellID = 87151, filter = "CD" },
 			-- Desperate Prayer
 			--{ spellID = 19236, filter = "CD" },
 			-- Holy Word: Chastise
-			{ spellID = 88625, filter = "CD" },
+			--{ spellID = 88625, filter = "CD" },
 			-- Mind Blast
-			{ spellID = 8092, filter = "CD" },
+			--{ spellID = 8092, filter = "CD" },
 			-- Holy Fire
-			{ spellID = 14914, filter = "CD" },
+			--{ spellID = 14914, filter = "CD" },
 		},
 		{
 			Name = "Priest Buffs",
@@ -632,46 +630,46 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Demon Soul
-			{ spellID = 77801, filter = "CD" },
+			--{ spellID = 77801, filter = "CD" },
 			-- Infernal
-			{ spellID = 1122, filter = "CD" },
+			--{ spellID = 1122, filter = "CD" },
 			-- Conflagrate
-			{ spellID = 17962, filter = "CD" },
+			--{ spellID = 17962, filter = "CD" },
 			-- Shadow Ward
 			{ spellID = 6229, filter = "CD" },
 			-- Demonic Empowerment
 			{ spellID = 47193, filter = "CD" },
 			-- Demon Leap
-			{ spellID = 54785, filter = "CD" },
+			--{ spellID = 54785, filter = "CD" },
 			-- Soulshatter
 			{ spellID = 29858, filter = "CD" },
 			-- Demonic Circle: Teleport
-			{ spellID = 48020, filter = "CD" },
+			--{ spellID = 48020, filter = "CD" },
 			-- Howl of Terror
-			{ spellID = 5484, filter = "CD" },
+			--{ spellID = 5484, filter = "CD" },
 			-- Death Coil
-			{ spellID = 6789, filter = "CD" },
+			--{ spellID = 6789, filter = "CD" },
 			-- Haunt
-			{ spellID = 48181, filter = "CD" },
+			--{ spellID = 48181, filter = "CD" },
 			-- Shadowburn
-			{ spellID = 17877, filter = "CD" },
+			--{ spellID = 17877, filter = "CD" },
 			-- Shadowfury
-			{ spellID = 30283, filter = "CD" },
+			--{ spellID = 30283, filter = "CD" },
 			-- Chaos Bolt
-			{ spellID = 50796, filter = "CD" },
+			--{ spellID = 50796, filter = "CD" },
 			-- Shadowflame
-			{ spellID = 47897, filter = "CD" },
+			--{ spellID = 47897, filter = "CD" },
 			-- Fel Domination
-			{ spellID = 18708, filter = "CD" },
+			--{ spellID = 18708, filter = "CD" },
 			-- Sacrifice (Voidwalker)
 			{ spellID = 7812, filter = "CD" },
 			-- Suffering (Voidwalker)
@@ -681,15 +679,15 @@ C["Filger_Spells"] = {
 			-- Devour Magic (Felhunter)
 			{ spellID = 19505, filter = "CD" },
 			-- Soul Harvest
-			{ spellID = 79268, filter = "CD" },
+			--{ spellID = 79268, filter = "CD" },
 			-- Felstorm
 			{ spellID = 89751, filter = "CD" },
 			-- Soulburn
-			{ spellID = 74434, filter = "CD" },
+			--{ spellID = 74434, filter = "CD" },
 			-- Hand of Gul'dan
-			{ spellID = 71521, filter = "CD" },
+			--{ spellID = 71521, filter = "CD" },
 			-- Immolation Aura
-			{ spellID = 50589, filter = "CD" },
+			--{ spellID = 50589, filter = "CD" },
 		},
 		{
 			Name = "Warlock Buffs",
@@ -861,18 +859,18 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Starsurge
 			{ spellID = 78674, filter = "CD" },
 			-- Starfall
-			{ spellID = 48505, filter = "CD" },
+			--{ spellID = 48505, filter = "CD" },
 		},
 		{
 			Name = "Druid Buffs",
@@ -1019,7 +1017,7 @@ C["Filger_Spells"] = {
 			-- Infected Wounds
 			--{ spellID = 58180, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Faerie Fire
-			{ spellID = 770, unitId = "target", caster = "player", filter = "DEBUFF" },			
+			{ spellID = 770, unitId = "target", caster = "all", filter = "DEBUFF" },			
 			
 			-- Thorns
 			{ spellID = 467, unitId = "target", caster = "player", filter = "BUFF" },
@@ -1054,24 +1052,24 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Kill Shot
-			{ spellID = 53351, filter = "CD" },
+			--{ spellID = 53351, filter = "CD" },
 			-- Chimera Shot
-			{ spellID = 53209, filter = "CD" },
+			--{ spellID = 53209, filter = "CD" },
 			-- Rapid Fire
-			{ spellID = 3045, filter = "CD" },
+			--{ spellID = 3045, filter = "CD" },
 			-- Feign Death
 			{ spellID = 5384, filter = "CD" },
 			-- Bestial Wrath
-			{ spellID = 19574, filter = "CD" },
+			--{ spellID = 19574, filter = "CD" },
 		},
 		{
 			Name = "Hunter Buffs",
@@ -1182,32 +1180,32 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Sprint
 			{ spellID = 2983, filter = "CD" },
 			-- Cloak of Shadows
-			{ spellID = 31224, filter = "CD" },
+			--{ spellID = 31224, filter = "CD" },
 			-- Tricks of the Trade
-			{ spellID = 57934, filter = "CD" },
+			--{ spellID = 57934, filter = "CD" },
 			-- Kidney Shot
-			{ spellID = 408, filter = "CD" },
+			--{ spellID = 408, filter = "CD" },
 			-- ShadowStep
 			{ spellID = 36554, filter = "CD" },
 			-- Shadow Dance
-			{ spellID = 51713, filter = "CD" },
+			--{ spellID = 51713, filter = "CD" },
 			-- Vendetta
-			{ spellID = 14177, filter = "CD" },
+			--{ spellID = 14177, filter = "CD" },
 			-- Cold Blood
-			{ spellID = 14177, filter = "CD" },
+			--{ spellID = 14177, filter = "CD" },
 			-- Vanish
-			{ spellID = 1856, filter = "CD" },
+			--{ spellID = 1856, filter = "CD" },
 		},
 		{
 			Name = "Rogue Buffs",
@@ -1362,44 +1360,42 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Stoneclaw Totem
 			{ spellID = 5730, filter = "CD" },
 			-- Grounding Totem
-			{ spellID = 8177, filter = "CD" },
+			--{ spellID = 8177, filter = "CD" },
 			-- Tremor Totem
 			{ spellID = 8143, filter = "CD" },
 			-- Spirit Link Totem
 			{ spellID = 98008, filter = "CD" },
 			-- Spiritwalker Grace
-			{ spellID = 79206, filter = "CD" },
+			--{ spellID = 79206, filter = "CD" },
 			-- Unleash Elements
-			{ spellID = 73680, filter = "CD" },
+			--{ spellID = 73680, filter = "CD" },
 			-- Shamanistic Rage
-			{ spellID = 30823, filter = "CD" },
+			--{ spellID = 30823, filter = "CD" },
 			-- Mana Tide Totem
 			{ spellID = 16190, filter = "CD" },
 			-- Nature's Swiftness
-			{ spellID = 16188, filter = "CD" },
+			--{ spellID = 16188, filter = "CD" },
 			-- Fire Elemental Totem
-			{ spellID = 2894, filter = "CD" },
+			--{ spellID = 2894, filter = "CD" },
 			-- Earth Elemental Totem
-			{ spellID = 2062, filter = "CD" },
+			--{ spellID = 2062, filter = "CD" },
 			-- Bloodlust
-			{ spellID = 2825, filter = "CD" },
+			--{ spellID = 2825, filter = "CD" },
 			-- Hex
-			{ spellID = 51514, filter = "CD" },
+			--{ spellID = 51514, filter = "CD" },
 			-- Healing Rain
 			{ spellID = 73920, filter = "CD" },
-			-- Unleash Elements
-			{ spellID = 73680, filter = "CD" },
 		},
 		{
 			Name = "Shaman Buffs",
@@ -1488,19 +1484,19 @@ C["Filger_Spells"] = {
 			{ spellID = 51945, unitId = "target", caster = "player", filter = "BUFF" },
 					
 			-- Searing Totem
-			{ spellID = 77661, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 77661, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Hex
 			--{ spellID = 51514, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
 			--{ spellID = 76780, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Storm Strike
 			{ spellID = 17364, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Earth Shock
-			{ spellID = 8042, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Frost Shock
 			{ spellID = 8056, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Flame Shock
 			{ spellID = 8050, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Earth Shock
+			{ spellID = 8042, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Earthgrab
 			{ spellID = 64695, unitId = "target", caster = "player", filter = "DEBUFF" },		
 		},
@@ -1527,34 +1523,34 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS,
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
 			-- Divine Plea
 			{ spellID = 54428, filter = "CD" },
 			-- Lay on Hands
-			{ spellID = 633, filter = "CD" },
+			--{ spellID = 633, filter = "CD" },
 			-- Divine Guardian
-			{ spellID = 70940, filter = "CD" },
+			--{ spellID = 70940, filter = "CD" },
 			-- Holy Shield
-			{ spellID = 20925, filter = "CD" },
+			--{ spellID = 20925, filter = "CD" },
 			-- Divine Protection
-			{ spellID = 498, filter = "CD" },
+			--{ spellID = 498, filter = "CD" },
 			-- Avenging Wrath
-			{ spellID = 31884, filter = "CD" },
+			--{ spellID = 31884, filter = "CD" },
 			-- Guardian of Ancient Kings
-			{ spellID = 86150, filter = "CD" },
+			--{ spellID = 86150, filter = "CD" },
 			-- Divine Favor
-			{ spellID = 31842, filter = "CD" },
+			--{ spellID = 31842, filter = "CD" },
 			-- Aura Mastery
-			{ spellID = 31821, filter = "CD" },
+			--{ spellID = 31821, filter = "CD" },
 			-- Zealotry
-			{ spellID = 85696, filter = "CD" },
+			--{ spellID = 85696, filter = "CD" },
 		},	
 		{
 			Name = "Paladin Buffs",
@@ -1678,22 +1674,22 @@ C["Filger_Spells"] = {
 		{
 			Name = "Cooldown",
 			Enable = true,
-			Direction = "HORIZONTAL",
+			Direction = "RIGHT",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = CdS, 
-			setPoint = { "BOTTOM", "iFilgerCooldowns", 0, 22 },
+			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 			
 			-- Recklesness
-			{ spellID = 1719, filter = "CD" },
+			--{ spellID = 1719, filter = "CD" },
 			-- Throwdown
-			{ spellID = 85388, filter = "CD" },
+			--{ spellID = 85388, filter = "CD" },
 			-- Intercept
-			{ spellID = 20252, filter = "CD" },
+			--{ spellID = 20252, filter = "CD" },
 			-- Berserker rage
-			{ spellID = 18499, filter = "CD" },  
+			--{ spellID = 18499, filter = "CD" },  
 			-- Last Stand
 			{ spellID = 12975, filter = "CD" },	
 			-- Taunt
@@ -1701,7 +1697,11 @@ C["Filger_Spells"] = {
 			-- Commanding Shout
 			{ spellID = 469, filter = "CD" },	
 			-- Heroic Leap	  
-			{ spellID = 6544, filter = "CD" },   
+			--{ spellID = 6544, filter = "CD" },
+			--Imp Hamstring
+			{ spellID = 23694, filter = "ICD", duration = 30 },
+			-- Inner Rage
+			{ spellID = 1134, filter = "CD" },
 		},
 		{
 			Name = "Warrior Buffs",
@@ -1877,6 +1877,9 @@ C["Filger_Spells"] = {
 			Size = EnhanceS,
 			setPoint = {  "TOPRIGHT", "iFilgerEnhancements",0,-22 },
 
+		-- Drink
+			{ spellID = 80167, unitId = "player", caster = "all", filter = "BUFF" },
+		
 		--Racial
 			-- Berserking -- RACIAL
 			{ spellID = 26297, unitId = "player", caster = "player", filter = "BUFF", absID = true },
@@ -2169,7 +2172,7 @@ C["Filger_Spells"] = {
 			-- Power Torrent
 			{ spellID = 74241, filter = "ICD", trigger = "BUFF", duration = 45 }, -- exact (check in game with Proculas)
 			-- Tricks of the Trade (Thx Rogue)
-			{ spellID = 57934, filter = "ICD", trigger = "BUFF", duration = 30 },
+			--{ spellID = 57934, filter = "ICD", trigger = "BUFF", duration = 30 },
 
 --			{ spellID = 74241, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
@@ -2179,7 +2182,7 @@ C["Filger_Spells"] = {
 --			Tons of SpellIDs taken from LoseControl so credit to Kouri 
 --			Here we track pvp buffs on our target							 
 			Name = "ENEMY PVP BUFF",
-			Enable = false,
+			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
@@ -2406,17 +2409,17 @@ C["Filger_Spells"] = {
 			--Hammer of Justice
 			{ spellID = 853, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Seal of Justice
-			{ spellID = 20170, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			--{ spellID = 20170, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Repentance
 			{ spellID = 20066, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Holy Wrath
 			{ spellID = 2812, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Turn Evil
-			{ spellID = 10326, unitId = "player", caster = "all", filter = "DEBUFF" },	
-			--Avenger's Shield
-			{ spellID = 31935, unitId = "player", caster = "all", filter = "DEBUFF" },			
+			{ spellID = 10326, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Dazed - Avenger's Shield
-			{ spellID = 63529, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			--{ spellID = 63529, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Avenger's Shield (Silence)
+			{ spellID = 31935, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },				
 
 			-- Mage --
 			--Silenced - Improved Counterspell
@@ -2442,7 +2445,7 @@ C["Filger_Spells"] = {
 			--Blast Wave
 			{ spellID = 11113, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Cone of Cold
-			{ spellID = 120, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 120, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frostbolt
 			--{ spellID = 116, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frostfire Bolt
@@ -2451,12 +2454,14 @@ C["Filger_Spells"] = {
 			{ spellID = 31589, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Cauterize
 			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Dragon's Breath
+			{ spellID = 31661, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Death Kinght --
 			--Monstrous Blow (Super ghoul)
 			{ spellID = 91797, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Desecration
-			{ spellID = 55666, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			--{ spellID = 55666, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Chains of Ice
 			{ spellID = 45524, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Strangulate
@@ -2570,7 +2575,7 @@ C["Filger_Spells"] = {
 			--Earthgrab (Earth's Grasp)
 			{ spellID = 64695, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Freeze (Frozen Power)
-			{ spellID = 63685, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 63685, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			--Earthbind (5 second duration per pulse, but will keep re-applying the debuff as long as you stand within the pulse radius)
 			--{ spellID = 3600, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Frost Shock
@@ -2606,7 +2611,7 @@ C["Filger_Spells"] = {
 			--Curse of Exhaustion
 			--{ spellID = 18223, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Shadowsnare (Glyph of Shadowflame)
-			{ spellID = 63311, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 63311, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Warrior --
 			--Hamstring
@@ -2632,7 +2637,7 @@ C["Filger_Spells"] = {
 			--Disarm
 			{ spellID = 676, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Piercing Howl
-			{ spellID = 12323, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 12323, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Colossus Smash
 			{ spellID = 86346, unitId = "player", caster = "all", filter = "DEBUFF" },
 
@@ -2896,7 +2901,7 @@ C["Filger_Spells"] = {
 			-- Sunder Armor
 			{ spellID = 108043, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Shockwave
-			{ spellID = 108046, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 108046, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Brutal Strike
 			{ spellID = 107567, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Degeneration
@@ -2964,15 +2969,15 @@ C["Filger_Spells"] = {
 			--Hammer of Justice
 			{ spellID = 853, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Seal of Justice
-			{ spellID = 20170, unitId = "target", caster = "all", filter = "DEBUFF" },	
+			--{ spellID = 20170, unitId = "target", caster = "all", filter = "DEBUFF" },	
 			--Repentance
 			{ spellID = 20066, unitId = "target", caster = "all", filter = "DEBUFF" },			
 			--Holy Wrath
 			{ spellID = 2812, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Turn Evil
 			{ spellID = 10326, unitId = "target", caster = "all", filter = "DEBUFF" },	
-			--Avenger's Shield
-			{ spellID = 31935, unitId = "target", caster = "all", filter = "DEBUFF" },			
+			--Avenger's Shield (Silence)
+			{ spellID = 31935, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },			
 			--Dazed - Avenger's Shield
 			--{ spellID = 63529, unitId = "target", caster = "all", filter = "DEBUFF" },	
 
