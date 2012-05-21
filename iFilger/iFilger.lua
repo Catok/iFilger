@@ -108,12 +108,78 @@ end
 
 
 ------------------------------------------------------------
+-- Flash functions
+------------------------------------------------------------
+
+local StartFlash = function(self, duration)
+	if not self.anim then
+		self.anim = self:CreateAnimationGroup("Flash")
+		
+		self.anim.fadein = self.anim:CreateAnimation("ALPHA", "FadeIn")
+		self.anim.fadein:SetChange(1)
+		self.anim.fadein:SetOrder(2)
+
+		self.anim.fadeout = self.anim:CreateAnimation("ALPHA", "FadeOut")
+		self.anim.fadeout:SetChange(-1)
+		self.anim.fadeout:SetOrder(1)
+	end
+
+	self.anim.fadein:SetDuration(duration)
+	self.anim.fadeout:SetDuration(duration)
+	self.anim:Play()
+end
+
+local StopFlash = function(self)
+	if self.anim then
+		self.anim:Finish()
+	end
+end
+
+function iFilger:Flash()
+	local time = self.value.start + self.value.duration - GetTime()
+
+	if time < 0 then
+		StopFlash(self)
+	end
+	
+	if time < iFilger_Config.FlashThreshold then
+		StartFlash(self, iFilger_Config.FlashDuration)
+	end
+end
+
+
+
+------------------------------------------------------------
 -- Function Update
 ------------------------------------------------------------
 
 
 
-function iFilger:UpdateCD()
+function iFilger:UpdateCDwithFlash()
+	local time = self.value.start + self.value.duration - GetTime()
+
+	if (self:GetParent().Mode == "BAR") then
+		self.statusbar:SetValue(time);
+		if time <= 60 then
+			self.time:SetFormattedText("%.1f",(time));
+		else
+			self.time:SetFormattedText("%d:%.2d",(time/60),(time%60));
+		end
+	end
+
+	if time < 0 then
+		local frame = self:GetParent()
+		frame.actives[self.activeIndex] = nil
+		self:SetScript("OnUpdate", nil)
+		iFilger.DisplayActives(frame)
+	end
+	
+	iFilger.Flash(self)
+end
+
+
+
+function iFilger:UpdateCDwithoutFlash()
 	local time = self.value.start + self.value.duration - GetTime()
 
 	if (self:GetParent().Mode == "BAR") then
@@ -132,6 +198,14 @@ function iFilger:UpdateCD()
 		iFilger.DisplayActives(frame)
 	end
 end
+
+-- yeah, ugly, i know... but nevermind ! xD
+
+
+
+------------------------------------------------------------
+-- Function Display
+------------------------------------------------------------
 
 function iFilger:DisplayActives()
 	if not self.actives then return end
@@ -273,28 +347,31 @@ function iFilger:DisplayActives()
 
 	-- Sort actives
 	if not self.sortedIndex then self.sortedIndex = {} end
+
 	-- Clear sorted (it would be easier to recreate self.sortedIndex or use a local array but this would not be GC-friendly)
 	for n in pairs(self.sortedIndex) do
 		self.sortedIndex[n] = 999 -- dummy high value
 	end
+
 	local activeCount = 1
 	for n in pairs(self.actives) do
 		self.sortedIndex[activeCount] = n
 		activeCount = activeCount + 1
 	end
-
 	table.sort(self.sortedIndex)
 
+
+	-- Update texture, count, cd, size, opacity, spid
 	local totalWidth = 0
 	index = 1
-	--for activeIndex, value in pairs(self.actives) do
+
+	--	for activeIndex, value in pairs(self.actives) do
 	for n in pairs(self.sortedIndex) do
 		if n >= activeCount then
 			break -- sortedIndex may be greater than actives
 		end
 		local activeIndex = self.sortedIndex[n]
 		local value = self.actives[activeIndex] -- Get sorted active
-
 		local aura = self.auras[index]
 
 		aura.spellName = GetSpellInfo( value.spid );
@@ -316,15 +393,29 @@ function iFilger:DisplayActives()
 				if value.data.filter == "CD" or value.data.filter == "ICD" then
 					aura.value = value
 					aura.activeIndex = activeIndex
-					aura:SetScript("OnUpdate", iFilger.UpdateCD)
+					if iFilger_Config.FlashIcon then
+						aura:SetScript("OnUpdate", iFilger.UpdateCDwithFlash)
+					else
+						aura:SetScript("OnUpdate", iFilger.UpdateCDwithoutFlash)
+					end
 				else
-					aura:SetScript("OnUpdate", nil)
+					aura.value = value
+					if iFilger_Config.FlashIcon then
+						aura:SetScript("OnUpdate", iFilger.Flash)
+					else
+						aura:SetScript("OnUpdate", nil)
+					end
 				end
 				aura.cooldown:Show()
 			else
 				aura.statusbar:SetMinMaxValues(0, value.duration);
 				aura.value = value
-				aura:SetScript("OnUpdate", iFilger.UpdateCD);
+				aura.activeIndex = activeIndex
+				if iFilger_Config.FlashBar then
+					aura:SetScript("OnUpdate", iFilger.UpdateCDwithFlash)
+				else
+					aura:SetScript("OnUpdate", iFilger.UpdateCDwithoutFlash)
+				end
 			end
 		else
 			if (self.Mode == "ICON") then
@@ -392,16 +483,16 @@ function iFilger:OnEvent(event, unit)
 					spid = 0
 					if data.filter == "BUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
-						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
+						spn, _, _ = GetSpellInfo(data.spellID)
+						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitBuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
 						end
 					elseif data.filter == "DEBUFF" and (not data.spec or data.spec == ptt) then
 						local caster, spn, expirationTime
-						spn, _, icon = GetSpellInfo(data.spellID)
-						name, _, _, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
+						spn, _, _ = GetSpellInfo(data.spellID)
+						name, _, icon, count, _, duration, expirationTime, caster, _, _, spid = iFilger:UnitDebuff(data.unitId, data.spellID, spn, data.absID)
 						if name and (data.caster == "all" or data.caster == caster) then
 							start = expirationTime - duration
 							found = true
@@ -427,7 +518,11 @@ function iFilger:OnEvent(event, unit)
 					elseif data.filter == "CD" and (not data.spec or data.spec == ptt) then
 						if data.spellID then
 							name, _, icon = GetSpellInfo(data.spellID)
-							start, duration = GetSpellCooldown(name)
+							if data.absID then
+								start, duration = GetSpellCooldown(data.spellID)
+							else
+								start, duration = GetSpellCooldown(name)
+							end
 							spid = data.spellID
 						elseif data.slotID then
 							spid = data.slotID
@@ -443,7 +538,11 @@ function iFilger:OnEvent(event, unit)
 					elseif data.filter == "ACD" and (not data.incombat or InCombatLockdown()) and (not data.spec or data.spec == ptt) then
 						name, _, icon = GetSpellInfo(data.spellID)
 						spid = data.spellID;
-						start, duration, enabled = GetSpellCooldown(name)
+						if data.absID then
+							start, duration, enabled = GetSpellCooldown(data.spellID)
+						else
+							start, duration, enabled = GetSpellCooldown(name)
+						end
 						found = true
 						if(not enabled) then
 							name = nil
@@ -486,11 +585,10 @@ function iFilger:OnEvent(event, unit)
 							self.actives[i] = {data = data, name = name, icon = icon, count = count, start = start, duration = duration, spid = spid}
 							needUpdate = true
 						else
-							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration or self.actives[i].spid ~= spid) then
+							if data.filter ~= "ICD" and data.filter ~= "ACD" and (self.actives[i].count ~= count or self.actives[i].start ~= start or self.actives[i].duration ~= duration) then
 								self.actives[i].count = count
 								self.actives[i].start = start
 								self.actives[i].duration = duration
-								self.actives[i].spid = spid
 								needUpdate = true
 							end
 						end
@@ -543,6 +641,7 @@ function iFilger:UpdateSpellList(zone)
 		for i = 1, #iFilger_Spells["ALL"], 1 do
 			-- merge similar spell-list (compare using Name and merge flag set) otherwise add another spell-list
 			if iFilger_Spells["ALL"][i].Enable then
+				loading = true
 				local merge = false
 				local spellListAll = iFilger_Spells["ALL"][i]
 				local enable = spellListAll
@@ -551,7 +650,7 @@ function iFilger:UpdateSpellList(zone)
 					spellListClass = iFilger["spells"][j]
 					local mergeAll = spellListAll.Merge or false
 					local mergeClass = spellListClass.Merge or false
-					if ( spellListClass.Name == spellListAll.Name and ( mergeAll or mergeClass ) ) then
+					if ( spellListClass.Name == spellListAll.Mergewith and ( mergeAll or mergeClass ) ) then
 						merge = true
 						break
 					end
@@ -564,7 +663,6 @@ function iFilger:UpdateSpellList(zone)
 					--I.Print("MERGING SPELLS FROM "..spellListAll.Name)
 					for j = 1, #spellListAll, 1 do
 						table.insert( spellListClass, spellListAll[j] )
-						loading = true
 					end
 				end
 			end
@@ -707,23 +805,10 @@ function iFilger:UpdatesFramesList ()
 				frame.Direction = "UP";
 			end
 			
-			local CDFound = false
-			local focusFound = false
-			local targetFound = false
-			for j = 1, #iFilger["spells"][i], 1 do
-				local data = iFilger["spells"][i][j]
-				if data.filter == "CD" or data.filter == "ACD" then
-					CDFound = true
-				elseif data.unitID == "target" then
-					targetFound = true
-				elseif data.unitID == "focus" then
-					focusFound = true
-				end
-			end
-			if CDFound then frame:RegisterEvent("SPELL_UPDATE_COOLDOWN") end
-			if CDFound then frame:RegisterEvent("SPELL_UPDATE_USABLE") end
+			frame:RegisterEvent("SPELL_UPDATE_COOLDOWN")
+			frame:RegisterEvent("SPELL_UPDATE_USABLE")
+			frame:RegisterEvent("PLAYER_FOCUS_CHANGED")
 			frame:RegisterEvent("PLAYER_TARGET_CHANGED")
-			if focusFound then frame:RegisterEvent("PLAYER_FOCUS_CHANGED") end
 			frame:RegisterEvent("UNIT_AURA")
 			frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 			frame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")

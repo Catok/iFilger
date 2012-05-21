@@ -4,6 +4,10 @@ C["Filger_Config"] = {
 	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
 	["tooltip"] = false,									-- tooltip on mouseover buffs, some people wanted it. I don't.
 	["TooltipMover"] = false,							-- tooltip on TooltipMover for ElvUI and Tukui users.
+	["FlashIcon"] = true,								-- Flash when time left is below a threshold in ICON mode.
+	["FlashBar"] = false,								-- Flash when time left is below a threshold in BAR mode.
+	["FlashThreshold"] = 5,								-- Threshold from which icons start flashing.
+	["FlashDuration"] = 0.5,							-- Duration of each flash smaller => quicker.
 }
 
 C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCooldown is enabled
@@ -346,6 +350,8 @@ C["Filger_Spells"] = {
 			{ spellID = 44413, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Cauterize	
 			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Imp Blink	
+			{ spellID = 46989, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Target Buffs and Debuffs",
@@ -412,6 +418,8 @@ C["Filger_Spells"] = {
 			{ spellID = 30482, unitId = "player", caster = "all", filter = "IBUFF", incombat = false, spec = 2 },
 			-- Mage Armor
 			{ spellID = 6117, unitId = "player", caster = "all", filter = "IBUFF", incombat = false, spec = 1 },
+			-- Ice Barrier
+--			{ spellID = 11426, unitId = "player", caster = "all", filter = "ACD", incombat = false, spec = 3 },
 			-- Combustion
 --			{ spellID = 11129, caster = "all", filter = "ACD", incombat = false },
 			-- Living Bomb
@@ -867,6 +875,8 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
+			-- Charge (cat)
+			--{ spellID = 49376, filter = "CD", absID = true },
 			-- Starsurge
 			{ spellID = 78674, filter = "CD" },
 			-- Starfall
@@ -1205,7 +1215,9 @@ C["Filger_Spells"] = {
 			-- Cold Blood
 			--{ spellID = 14177, filter = "CD" },
 			-- Vanish
-			--{ spellID = 1856, filter = "CD" },
+			{ spellID = 1856, filter = "CD" },
+			-- Cheating Death ICD
+			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
 		{
 			Name = "Rogue Buffs",
@@ -1437,8 +1449,6 @@ C["Filger_Spells"] = {
 
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Clearcasting
-			{ spellID = 16246, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 51562, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Focused Insight
@@ -1551,6 +1561,10 @@ C["Filger_Spells"] = {
 			--{ spellID = 31821, filter = "CD" },
 			-- Zealotry
 			--{ spellID = 85696, filter = "CD" },
+			-- Hand of Freedom
+			--{ spellID = 1044, filter = "CD" },
+			-- Sacred Shield
+			{ spellID = 96263, filter = "ICD", trigger = "BUFF", duration = 60 },
 		},	
 		{
 			Name = "Paladin Buffs",
@@ -1852,13 +1866,13 @@ C["Filger_Spells"] = {
 			{ spellID = 52610, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Owlkin Frenzy
 			{ spellID = 48391, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Berserker Rage *
+			-- Berserker Rage
 			{ spellID = 18499, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Wrecking Crew  *
 			{ spellID = 57519, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Death Wish  *
+			-- Death Wish
 			{ spellID = 12292, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Bastion of Defense  *
+			-- Bastion of Defense
 			{ spellID = 29594, unitId = "target", caster = "all", filter = "BUFF" },
 		},
 	},
@@ -2105,13 +2119,14 @@ C["Filger_Spells"] = {
 			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
-			Name = "Cooldown", -- (racial)
+			Name = "Racials", -- (racial)
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 			Merge = true,
+			Mergewith = "Cooldown",
 --			BarWidth = 150,
 			Size = 52,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
@@ -2146,13 +2161,14 @@ C["Filger_Spells"] = {
 			{ spellID = 20589, filter = "CD" }, 
 		},
 		{
-			Name = "Cooldown", -- (ICD)
+			Name = "ICD", -- (ICD)
 			Enable = true,
 			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 			Merge = true,
+			Mergewith = "Cooldown",
 --			BarWidth = 150,
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
@@ -2260,6 +2276,8 @@ C["Filger_Spells"] = {
 			{ spellID = 31850, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Guardian of Ancient Kings (prot) -50% dmg
 			{ spellID = 86659, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Sacred Shield
+			{ spellID = 96263, unitId = "target", caster = "all", filter = "BUFF" },
 
 			-- Hunter --
 			-- Deterrence
@@ -2819,7 +2837,7 @@ C["Filger_Spells"] = {
 			-- The Widow's Kiss
 			{ spellID = 99476, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Fixate (Heroic)
-			{ spellID = 99526, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 99526, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Volatile Poison (Heroic)
 			{ spellID = 99278, unitId = "player", caster = "all", filter = "DEBUFF" },
 		-- Baleroc	
@@ -2846,7 +2864,11 @@ C["Filger_Spells"] = {
 			-- Burning Wound 
 			{ spellID = 101239, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Fixate
-			{ spellID = 99849, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 99849, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			-- Magma Trap Vulnerability
+			{ spellID = 100238, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Superheated
+			{ spellID = 100594, unitId = "player", caster = "all", filter = "DEBUFF" },
 
 	--   INCOMPLETE, NEED LOTS OF TEST AND FEED BACK  -- 
 	-- Dragon Soul

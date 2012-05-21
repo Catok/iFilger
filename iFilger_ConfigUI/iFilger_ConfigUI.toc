@@ -1,0 +1,12 @@
+## Interface: 40300
+## Author: Ildyria
+## Title: |cff1784d1iFilger|r |cffffffffConfigUI|r
+## Notes: Config Panel for iFilger
+## Credits: Hydra, Tukz
+## Version: 1.3
+## DefaultState: disabled
+## RequiredDeps: iFilger_Config
+## SavedVariables: iFilgerConfigUISV
+## SavedVariablesPerCharacter: iFilgerConfigUISVPC
+
+load.xml
