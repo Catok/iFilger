@@ -4,7 +4,7 @@ C["Filger_Config"] = {
 	["cleverzone"] = false,								-- load only PVP in PVP zones and PVE in PVE zones (require to reload the 1st time you enter the pve zone)
 	["tooltip"] = false,									-- tooltip on mouseover buffs, some people wanted it. I don't.
 	["TooltipMover"] = false,							-- tooltip on TooltipMover for ElvUI and Tukui users.
-	["FlashIcon"] = true,								-- Flash when time left is below a threshold in ICON mode.
+	["FlashIcon"] = false,								-- Flash when time left is below a threshold in ICON mode.
 	["FlashBar"] = false,								-- Flash when time left is below a threshold in BAR mode.
 	["FlashThreshold"] = 5,								-- Threshold from which icons start flashing.
 	["FlashDuration"] = 0.5,							-- Duration of each flash smaller => quicker.
@@ -35,6 +35,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
 		{ name = "iFilgerFocusBuffs", w = 150, h = 20, anchor = "TOPRIGHT", x = 567, y = 253, text = "Focus Buffs" },
 		{ name = "iFilgerMageInvertAura", w = 200, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Invert Auras/CD" },
+		{ name = "iFilgerInterrupt", w = 100, h = 20, anchor = "BOTTOM", x = 0, y = 30, text = "Interrupt" },
 	},
 	["DEATHKNIGHT"] = {
 		{ name = "iFilgerCooldowns", w = 130, h = 20, anchor = "BOTTOM", x = -230, y = -440, text = "Cooldowns" },
@@ -100,6 +101,7 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerPlayerBuff", w = 145, h = 21, anchor = "BOTTOMLEFT", x = -189, y = -185, text = "Player Buffs" },
 		{ name = "iFilgerProcs", w = 110, h = 21, anchor = "BOTTOMLEFT", x = -302, y = -185, text = "Procs" },
 		{ name = "iFilgerBuffDebuff", w = 205, h = 21, anchor = "TOPLEFT", x = 86, y = -191, text = "Target Buffs/Debuffs" },
+		--{ name = "iFilgerTempBuffs", w = 150, h = 20, anchor = "BOTTOMLEFT", x = -306, y = -208, text = "Temp Buffs" },
 	},
 	["ALL"] = {
 		{ name = "iFilgerEnhancements", w = 150, h = 20, anchor = "BOTTOMRIGHT", x = -47, y = -284, text = "Enhancements" },
@@ -442,6 +444,24 @@ C["Filger_Spells"] = {
 			{ spellID = 92967, unitId = "focus", caster = "all", filter = "BUFF" },	
 			-- Converted Power - Arcanotron
 			{ spellID = 79735, unitId = "focus", caster = "all", filter = "BUFF" },
+		},
+		{
+			Name = "Interrupt",  
+			Enable = true,
+			Direction = "HORIZONTAL",
+			Interval = 3,
+			Mode = "ICON",
+			Alpha = 1,
+--			BarWidth = 150,
+			Size = FS, 
+			setPoint = { "TOP", "iFilgerInterrupt", 0, -22 },
+			
+			-- Frostbolt
+			{ spellID = 116, filter = "CD" },
+			-- Fireball
+			{ spellID = 133, filter = "CD" },	
+			-- Arcane Blast
+			{ spellID = 30451, filter = "CD" },
 		},
 	},
 	["PRIEST"] = { ---------------------------------------------------- Priest	
@@ -877,8 +897,8 @@ C["Filger_Spells"] = {
 
 			-- Charge (cat)
 			--{ spellID = 49376, filter = "CD", absID = true },
-			-- Starsurge
-			{ spellID = 78674, filter = "CD" },
+			-- Frenzied Regeneration
+			{ spellID = 22842, filter = "CD" },
 			-- Starfall
 			--{ spellID = 48505, filter = "CD" },
 		},
@@ -1005,17 +1025,17 @@ C["Filger_Spells"] = {
 			-- Pounce Bleed
 			{ spellID = 9007, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Mangle
-			{ spellID = 33876, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 33876, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Hemorrhage
-			{ spellID = 16511, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			{ spellID = 16511, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2, absID = true },
 			-- Trauma
-			{ spellID = 46857, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 46857, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Tendon Rip
-			{ spellID = 50271, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 50271, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Gore
-			{ spellID = 35290, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 35290, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Stampede (Rhino)
-			{ spellID = 57386, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 57386, unitId = "target", caster = "all", filter = "DEBUFF", spec = 2 },
 			-- Moonfire
 			{ spellID = 8921, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Sunfire
@@ -1167,7 +1187,7 @@ C["Filger_Spells"] = {
 			-- Marked for Death
 			{ spellID = 88691, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Piercing Shots 
-			{ spellID = 63468, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 63468, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Focus",
@@ -1215,7 +1235,7 @@ C["Filger_Spells"] = {
 			-- Cold Blood
 			--{ spellID = 14177, filter = "CD" },
 			-- Vanish
-			{ spellID = 1856, filter = "CD" },
+			--{ spellID = 1856, filter = "CD" },
 			-- Cheating Death ICD
 			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
@@ -1449,6 +1469,8 @@ C["Filger_Spells"] = {
 
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Clearcasting
+			{ spellID = 16246, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 51562, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Focused Insight
@@ -1663,7 +1685,7 @@ C["Filger_Spells"] = {
 			-- Hammer of Justice
 			{ spellID = 853, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Seal of Truth Aka Censure
-			{ spellID = 31803, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 31803, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},	
 		{
 			Name = "Focus",
@@ -1800,12 +1822,12 @@ C["Filger_Spells"] = {
 			Size = PTDBS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 
-			-- Hamstring
-			{ spellID = 1715, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Rend
-			{ spellID = 94009, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Improved Hamstring
+			{ spellID = 23694, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Colossus Smash
 			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Rend
+			{ spellID = 94009, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Sunder Armor
 			{ spellID = 7386, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Expose Armor (Rogue)
@@ -1816,8 +1838,8 @@ C["Filger_Spells"] = {
 			{ spellID = 85388, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Shockwave
 			{ spellID = 46968, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Improved Hamstring
-			{ spellID = 23694, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Hamstring
+			{ spellID = 1715, unitId = "target", caster = "all", filter = "DEBUFF" },
 			
 			-- Thunder Clap
 			{ spellID = 6343, unitId = "target", caster = "all", filter = "DEBUFF" },
@@ -1835,7 +1857,23 @@ C["Filger_Spells"] = {
 			{ spellID = 26017, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
 			-- Curse of Weakness (Warlock)
 			{ spellID = 702, unitId = "target", caster = "all", filter = "DEBUFF", spec = 3 },
-		},	
+		},
+		{
+			Name = "Temp Buffs",  
+			Enable = false,
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "BAR",
+			Alpha = 1,
+			BarWidth = 196,
+			Size = 18, 
+			setPoint = { "TOPLEFT", "iFilgerTempBuffs", 0, -22 },
+			
+			-- Battle Shout
+			{ spellID = 6673, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Horn of Winter
+			{ spellID = 57330, unitId = "player", caster = "all", filter = "BUFF" },	
+		},
 	},		
 -------------------------------------------------------------	
 -- Credits to Sapz
@@ -2550,8 +2588,6 @@ C["Filger_Spells"] = {
 			{ spellID = 92380, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Pin (Crab)
 			{ spellID = 50245, unitId = "player", caster = "all", filter = "DEBUFF" },
-			--Tendon Rip (Hyena)
-			{ spellID = 50271, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Bad Manner (Monkey)
 			{ spellID = 90337, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Venom Web Spray (Silithid)
@@ -2921,7 +2957,7 @@ C["Filger_Spells"] = {
 			-- Twilight Barrage
 			{ spellID = 109204, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Sunder Armor
-			{ spellID = 108043, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 108043, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Shockwave
 			{ spellID = 108046, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Brutal Strike
