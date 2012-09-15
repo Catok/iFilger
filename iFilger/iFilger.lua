@@ -226,6 +226,17 @@ function iFilger:DisplayActives()
 			-- anchor
 			if index == 1 then
 				aura:Point(unpack(self.setPoint))
+			elseif self.Column and (self.Column + 1) == index then
+					print(self.Column)
+					if self.Direction == "UP" then
+						aura:Point("RIGHT", self.auras[1], "LEFT", 0, self.Interval)
+					elseif self.Direction == "RIGHT" or self.Direction == "HORIZONTAL" then
+						aura:Point("LEFT", self.auras[1], "RIGHT", self.Interval, 0)
+					elseif self.Direction == "LEFT" then
+						aura:Point("RIGHT", self.auras[1], "LEFT", -self.Interval, 0)
+					else
+						aura:Point("LEFT", self.auras[1], "RIGHT", 0, -self.Interval)
+					end
 			else
 				if self.Direction == "UP" then
 					aura:Point("BOTTOM", previous, "TOP", 0, self.Interval)
@@ -800,6 +811,7 @@ function iFilger:UpdatesFramesList ()
 			frame:Height(data.Size or 20)
 			frame:Point(unpack(data.setPoint))
 			frame:SetAlpha(data.Alpha or 1.0)
+			frame.Column = data.Column or nil
 			
 			if(data.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
 				frame.Direction = "UP";

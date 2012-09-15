@@ -1819,6 +1819,7 @@ C["Filger_Spells"] = {
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
+			Column = 3,
 --			BarWidth = 150,
 			Size = EnhanceS,
 			setPoint = {  "TOPRIGHT", "iFilgerEnhancements",0,-22 },
