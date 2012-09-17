@@ -10,6 +10,15 @@ if client == "koKR" then
 	C.font = [=[Interface\AddOns\iFilger_ConfigUI\media\batang.ttf]=]
 end
 
+if client == "zhCN" then 
+	C.font = [=[fonts\ARHei.ttf]=] 
+end
+
+if client == "zhTW" then 
+	C.font = [=[fonts\ARHei.ttf]=] 
+end
+
+
 local function GetTemplate(t)
 	if t == "iFilger" then
 		borderr, borderg, borderb = .6, .6, .6
