@@ -891,6 +891,8 @@ C["Filger_Spells"] = {
 			{ spellID = 78674, filter = "CD" },
 			-- Starfall
 			--{ spellID = 48505, filter = "CD" },
+			-- Nature's Cure
+			{ spellID = 88423, filter = "CD" },
 		},
 		{
 			Name = "Druid Buffs",
@@ -2605,8 +2607,10 @@ C["Filger_Spells"] = {
 			{ spellID = 51722, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			--Crippling Poison
 			--{ spellID = 3409, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			--Debilitation
+			--{ spellID = 119696, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Deadly Throw
-			--{ spellID = 26679, unitId = "player", caster = "all", filter = "DEBUFF" },		
+			--{ spellID = 26679, unitId = "player", caster = "all", filter = "DEBUFF" },			
 			--Gouge
 			{ spellID = 1776, unitId = "player", caster = "all", filter = "DEBUFF" },		
 			--Cheap Shot
@@ -2691,6 +2695,8 @@ C["Filger_Spells"] = {
 			{ spellID = 91807, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Asphyxiate
 			{ spellID = 108194, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Remorseless Winter
+			{ spellID = 115001, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 		
 			--[[ Druid ]]--
 			-- Mighty Bash
@@ -2714,13 +2720,27 @@ C["Filger_Spells"] = {
 			-- Hibernate
 			{ spellID = 2637, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Mass Entanglement
-			{ spellID = 2637, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 102359, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Disorienting Roar
 			{ spellID = 99, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Ursol's Vortex
 			{ spellID = 127797, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Bear Hug
 			{ spellID = 102795, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fae Silence
+			{ spellID = 114238, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Dazed (Wild Charge - Cat)
+			{ spellID = 50259, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			
+			--[[ Druid Symbiosis]]--
+			-- hammer of Justice (Paladin)
+			{ spellID = 110698, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			-- Intimidating Roar [Fleeing in fear] (Warrior)
+			{ spellID = 113004, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			-- Intimidating Roar [Cowering in fear] (Warrior)
+			{ spellID = 113056, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			-- Grapple Weapon (Monk)
+			--{ spellID = 126458, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			
 			--[[ Hunter ]]--
 			--Freezing Trap
@@ -2815,6 +2835,8 @@ C["Filger_Spells"] = {
 			{ spellID = 8034, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Static Charge
 			{ spellID = 118905, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Shaman Primal Earth Elemental
+			{ spellID = 118345, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Warlock ]]--
 			--Axe Toss (Felguard)
@@ -2830,23 +2852,25 @@ C["Filger_Spells"] = {
 			--Seduction (Succubus)
 			{ spellID = 6358, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Mesmerize (Succubus)
-			{ spellID = 115268, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 115268, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },	
 			--Shadowfury
 			{ spellID = 30283, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Spell Lock (Felhunter)
 			{ spellID = 24259, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Unstable Affliction
-			--{ spellID = 31117, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 31117, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			--Optical Blast (Observer)
 			{ spellID = 115782, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Mesmerize (Shivarra)
-			{ spellID = 115268, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 115268, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			--Disarm (Voidwalker)
-			{ spellID = 118093, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 118093, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Havoc
 			{ spellID = 80240, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Archimonde's Vengeance
-			{ spellID = 108505, unitId = "player", caster = "all", filter = "DEBUFF" },	
+			{ spellID = 108505, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Sleep (Metamorphosis)
+			{ spellID = 104045, unitId = "player", caster = "all", filter = "DEBUFF" },	
 			
 			--[[ Warrior ]]--
 			--Hamstring
@@ -2860,7 +2884,7 @@ C["Filger_Spells"] = {
 			--Silenced - Gag Order
 			{ spellID = 18498, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Disarm
-			{ spellID = 676, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 676, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			--Piercing Howl
 			--{ spellID = 12323, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Colossus Smash
@@ -2873,12 +2897,34 @@ C["Filger_Spells"] = {
 			{ spellID = 107570, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Dragon Roar
 			{ spellID = 118895, unitId = "player", caster = "all", filter = "DEBUFF" },
+			
+			--[[ Monk ]]--
+			--Breath of Fire (Glyph of Breath of Fire)
+			{ spellID = 123393, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Clash
+			{ spellID = 126451, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Charging Ox Wave
+			{ spellID = 119392, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Leg Sweep
+			{ spellID = 119381, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Paralysis
+			{ spellID = 115078, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Grapple Weapon
+			{ spellID = 117368, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Spear Hand Strike
+			{ spellID = 116709, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Disable
+			{ spellID = 116706, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
+			--Spinning Fire Blossom
+			{ spellID = 123407, unitId = "player", caster = "all", filter = "DEBUFF" },
 
 			--[[ Racials ]]--
 			-- War Stomp
 			{ spellID = 20549, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Arcane Torrent
 			{ spellID = 69179, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Quaking Palm
+			{ spellID = 107079, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Other
 			-- Rocket Fuel Leak
@@ -3436,7 +3482,9 @@ C["Filger_Spells"] = {
 			--Dismantle
 			{ spellID = 51722, unitId = "target", caster = "all", filter = "DEBUFF" },	
 			--Crippling Poison
-			--{ spellID = 3409, unitId = "target", caster = "all", filter = "DEBUFF" },		
+			--{ spellID = 3409, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Debilitation
+			--{ spellID = 119696, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Deadly Throw
 			--{ spellID = 26679, unitId = "target", caster = "all", filter = "DEBUFF" },		
 			--Gouge
@@ -3523,6 +3571,8 @@ C["Filger_Spells"] = {
 			{ spellID = 91807, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Asphyxiate
 			{ spellID = 108194, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Remorseless Winter
+			{ spellID = 115001, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
 		
 			--[[ Druid ]]--
 			-- Mighty Bash
@@ -3546,13 +3596,27 @@ C["Filger_Spells"] = {
 			-- Hibernate
 			{ spellID = 2637, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Mass Entanglement
-			{ spellID = 2637, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 102359, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Disorienting Roar
 			{ spellID = 99, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Ursol's Vortex
 			{ spellID = 127797, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Bear Hug
 			{ spellID = 102795, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Fae Silence
+			{ spellID = 114238, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Dazed (Wild Charge - Cat)
+			{ spellID = 50259, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			
+			--[[ Druid Symbiosis]]--
+			-- hammer of Justice (Paladin)
+			{ spellID = 110698, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			-- Intimidating Roar [Fleeing in fear] (Warrior)
+			{ spellID = 113004, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			-- Intimidating Roar [Cowering in fear] (Warrior)
+			{ spellID = 113056, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			-- Grapple Weapon (Monk)
+			--{ spellID = 126458, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
 			
 			--[[ Hunter ]]--
 			--Freezing Trap
@@ -3645,6 +3709,8 @@ C["Filger_Spells"] = {
 			{ spellID = 8034, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Static Charge
 			{ spellID = 118905, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Shaman Primal Earth Elemental
+			{ spellID = 118345, unitId = "target", caster = "all", filter = "DEBUFF" },
 			
 			--[[ Warlock ]]--
 			--Axe Toss (Felguard)
@@ -3664,13 +3730,15 @@ C["Filger_Spells"] = {
 			--Spell Lock (Felhunter)
 			{ spellID = 24259, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Unstable Affliction
-			--{ spellID = 31117, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 31117, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
 			--Optical Blast (Observer)
 			{ spellID = 115782, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Mesmerize (Shivarra)
-			{ spellID = 115268, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 115268, unitId = "target", caster = "all", filter = "DEBUFF", },
 			--Disarm (Voidwalker)
-			{ spellID = 118093, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 118093, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			-- Sleep (Metamorphosis)
+			{ spellID = 104045, unitId = "target", caster = "all", filter = "DEBUFF" },	
 			
 			--[[ Warrior ]]--
 			--Hamstring
@@ -3684,7 +3752,7 @@ C["Filger_Spells"] = {
 			--Silenced - Gag Order
 			{ spellID = 18498, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Disarm
-			{ spellID = 676, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 676, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
 			--Piercing Howl
 			--{ spellID = 12323, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Colossus Smash
@@ -3697,12 +3765,34 @@ C["Filger_Spells"] = {
 			{ spellID = 107570, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Dragon Roar
 			{ spellID = 118895, unitId = "target", caster = "all", filter = "DEBUFF" },
+			
+			--[[ Monk ]]--
+			--Breath of Fire (Glyph of Breath of Fire)
+			{ spellID = 123393, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Clash
+			{ spellID = 126451, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Charging Ox Wave
+			{ spellID = 119392, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Leg Sweep
+			{ spellID = 119381, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Paralysis
+			{ spellID = 115078, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Grapple Weapon
+			{ spellID = 117368, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Spear Hand Strike
+			{ spellID = 116709, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--Disable
+			{ spellID = 116706, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
+			--Spinning Fire Blossom
+			{ spellID = 123407, unitId = "target", caster = "all", filter = "DEBUFF" },
 
 			--[[ Racials ]]--
 			-- War Stomp
 			{ spellID = 20549, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Arcane Torrent
 			{ spellID = 69179, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Quaking Palm
+			{ spellID = 107079, unitId = "target", caster = "all", filter = "DEBUFF" },
 			
 			-- Other
 			-- Rocket Fuel Leak
