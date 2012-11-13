@@ -1,30 +1,46 @@
-local C, F, L = unpack(select(2, ...))
+﻿local C, F, L = unpack(select(2, ...))
 
 local client = GetLocale()
 
 if client == "ruRU" then
-	L["Config"] = "Если Вы настраиваете |cff1784d1iFilger|r через редактирование \nLua и хотите при этом использовать внутриигровую\n настройку,не забудьте нажать кнопку\n |cff1784d1Сбросить настройки|r после каждой модификации\n config.lua"
-	L["iFilger"] = "|cff1784d1iFilger|r |cffffffffНастройки|r"
-	
 	-- option name
+	L["iFilger"] = "|cffffffffНастройки|r |cff1784d1iFilger|r"
+	L["Config"] = "Если Вы настраиваете |cff1784d1iFilger|r через \n редактирование Lua и хотите при\n этом использовать внутриигровую \n настройку, не забудьте нажать кнопку \n |cff1784d1Сбросить настройки|r после каждой \n модификации config.lua"
+
+	L["RESETMSG"] = "Вы уверены, что хотите сбросить все настройки на умолчания?"
+
 	L["Name"] = "Имя"
 	L["Enable"] = "Включить"
 	L["Size"] = "Размер"
 	L["Direction"] = "Направление"
-	L["IconSide"] = "IconSide"
+	L["IconSide"] = "Сторона иконки"
 	L["Interval"] = "Промежуток"
 	L["Mode"] = "Режим"
 	L["Alpha"] = "Прозрачность"
 	L["BarWidth"] = "Ширина полосы"
 	L["Merge"] = "Сливать"
+	L["Mergewith"] = "Сливать с"
 
+	L["autoupdate"] = "Авто обновление"
 	L["cleverzone"] = "Умная зона"
 	L["tooltip"] = "Подсказка"
 	L["TooltipMover"] = "Фиксатор подсказки"
 	L["FlashIcon"] = "Мигание (Иконки)"
 	L["FlashBar"] = "Мигание (Полосы)"
 	L["FlashThreshold"] = "Значение мигания"
-	L["FlashDuration"] = "Длительность мигания"
+	L["FlashDuration"] = "Время мигания"
+
+	L["AddSpell"] = "Добавить заклинание"
+	L["spellID"] = "ID закл. или слота"
+	L["filter"] = "Фильтр"
+	L["unitId"] = "Id юнита"
+	L["caster"] = "Владелец"
+	L["absID"] = "Точный ID"
+	L["incombat"] = "В бою"
+	L["spec"] = "Спек"
+	L["trigger"] = "Триггер ICD"
+	L["duration"] = "Длительность ICD"
+	L["icon"] = "Иконка"
 
 	-- option help
 	L["H_Name"] = "Название суб-секции"
@@ -42,7 +58,9 @@ if client == "ruRU" then
 	L["H_Alpha2"] = "Значение между 1 (не прозрачно) и 0 (полностью прозрачно)"
 	L["H_BarWidth"] = "Ширина полосы (только в режиме полос)"
 	L["H_Merge"] = "Включить слияние при одинаковых именах."
+	L["H_Mergewith"] = "Название списка с которым нужно сливать данный."
 
+	L["H_autoupdate"] = "Автоматически обновлять настройки."
 	L["H_cleverzone1"] = "Умная зона:"
 	L["H_cleverzone2"] = "Загружать только PvP в PvP зонах и PvE в PvE зонах"
 	L["H_cleverzone3"] = "(Требует перезагрузки в первое посещение PvE зоны)"
@@ -55,10 +73,59 @@ if client == "ruRU" then
 	L["H_FlashDuration1"] = "Скорость мигания."
 	L["H_FlashDuration2"] = "Должно быть положительным значением, меньше => быстрее."
 
+	L["H_spellID"] = "ID заклинания или слота экипировки: 13 или 14 для аксессуаров"
+	L["H_filter1"] = "Список жоступных фильтров : "
+	L["H_filter2"] = "|cffffffffBUFF|r - фильтрование баффов."
+	L["H_filter3"] = "|cffffffffDEBUFF|r - фильтрование дебаффов."
+	L["H_filter4"] = "|cffffffffIBUFF|r - отслеживать отсутствующий бафф."
+	L["H_filter5"] = "|cffffffffIDEBUFF|r - отслеживать отсутствующий дебафф."
+	L["H_filter6"] = "|cffffffffCD|r - отслеживать восстановление."
+	L["H_filter7"] = "|cffffffffACD|r - отслеживать доступность способности, требуется установка владельца на \"all\""
+	L["H_filter8"] = "|cffffffffICD|r - отслеживать внутреннее время восстановления (ICD), требуются триггер и длительность"
+	L["H_unitId1"] = "Список доступных id :"
+	L["H_unitId2"] = "|cffffffffplayer|r - игрок"
+	L["H_unitId3"] = "|cfffffffftarget|r - цель"
+	L["H_unitId4"] = "|cfffffffffocus|r - фокус"
+	L["H_unitId5"] = "|cffffffffpet|r - питомец"
+	L["H_unitId6"] = "|cfffffffftargettarget|r цель цели"
+	L["H_unitId7"] = "|cffffffffparty1|r ... - группа1"
+	L["H_unitId8"] = "|cffffffffarena1|r ... - арена1"
+	L["H_caster"] = "|cffffffffplayer|r или |cffffffffall|r - ваше заклинание или принадлежащее любому"
+	L["H_absID"] = "Показывать только если ID заклинания совпадает"
+	L["H_incombat"] = "Показывать только в бою"
+	L["H_spec"] = "Показывать только в этой специализации (|cffffffff1|r |cffffffff2|r |cffffffff3|r или |cffffffff4|r)"
+	L["H_trigger1"] = "Триггер ICD :"
+	L["H_trigger2"] = "|cffffffffBUFF|r - ICD начитается, когда появляется бафф."
+	L["H_trigger3"] = "|cffffffffDEBUFF|r - ICD начитается, когда появляется дебафф."
+	L["H_trigger4"] = "|cffff0000/!\\ Отсчет начинается при|r"
+	L["H_trigger5"] = "|cffff0000появлении триггера, а не при его исчезновении.|r"
+	L["H_duration"] = "Длительность ICD в секундах"
+	L["H_icon1"] = "Извините, но конфигурация иконок для"
+	L["H_icon2"] = "|cffff0000продвинутых пользователей|r и";
+	L["H_icon3"] = "должна производиться через редактирование LUA."
+
 	-- buttons
 	L["Apply"] = "Применить"
+	L["Cancel"] = "Отмена"
 	L["Reset Config"] = "Сбросить настройки"
 	L["Move Buffs"] = "Двигать баффы"
 	L["Reset Buff Position"] = "Сброс позиции баффов"
-	L["Global"] = "Global Config"
+	L["Global"] = "Глобальные"
+	L["Del"] = "Удалить"
+	L["Edit"] = "Править"
+	L["Add"] = "Добавить"
+
+	-- update text
+	local myClass = select(2, UnitClass("player"));
+
+	L["VersionNotFound"] = "Версия не найдена, очищаю saved variables."
+	L["UpdateRequired"] = "Версия вешего интерфейсап настроек устарела. Мы рекомендуем вам сделать |cffff0000"..L["Reset Config"].."|r перед использованием |cff1784d1iFilger|r."
+	L["WarningConfig"] = "Сделаны изменения в настройках.\nМы рекомендуем вам сделать |cffff0000"..L["Reset Config"].."|r\nперед использованием |cff1784d1iFilger|r."
+	L["Updated"] = "|cff1784d1iFilger|r обновлен."
+	L["ClassVersion"] = myClass.." версия : "
+	L["AllVersion"] = ", ALL version : "
+	L["CurrentClassVersion"] = "Текущая версия для "..myClass.." : "
+	L["CurrentAllVersion"] = ", текущая версия для всех : "
+	L["AvailableClassVersion"] = "Доступна версия для "..myClass.." : "
+	L["AvailableAllVersion"] = ", доступная версия для всех : "
 end

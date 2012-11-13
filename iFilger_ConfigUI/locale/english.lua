@@ -1,4 +1,4 @@
-local C, F, L = unpack(select(2, ...))
+﻿local C, F, L = unpack(select(2, ...))
 
 -- option name
 L["iFilger"] = "|cff1784d1iFilger|r |cffffffffConfiguration|r"
@@ -34,9 +34,11 @@ L["unitId"] = "Unit Id"
 L["caster"] = "Caster"
 L["absID"] = "Absolute ID"
 L["incombat"] = "In combat"
+L["known"] = "Spell known"
 L["spec"] = "Spec"
 L["trigger"] = "Trigger for ICD"
 L["duration"] = "Duration for ICD"
+L["timeleft"] = "Time left"
 L["icon"] = "Icon"
 
 -- option help
@@ -88,7 +90,9 @@ L["H_unitId6"] = "|cfffffffftargettarget|r"
 L["H_unitId7"] = "|cffffffffparty1|r ..."
 L["H_unitId8"] = "|cffffffffarena1|r ..."
 L["H_caster"] = "|cffffffffplayer|r or |cffffffffall|r - only cast by you or everyone"
-L["H_absID"] = "Only show if the Sepll ID is exactly the same"
+L["H_absID"] = "Only show if the Spell ID is exactly the same"
+L["H_known1"] = "Only show if the SpellID is known by the player."
+L["H_known2"] = "|cffff0000/!\\ YOU HAVE TO BE SURE OF THE SPELLID|r"
 L["H_incombat"] = "Only show while in combat"
 L["H_spec"] = "Only show while in that spec (|cffffffff1|r |cffffffff2|r |cffffffff3|r or |cffffffff4|r)"
 L["H_trigger1"] = "Trigger for ICD :"
@@ -97,6 +101,7 @@ L["H_trigger3"] = "|cffffffffDEBUFF|r - ICD start when the debuff show up."
 L["H_trigger4"] = "|cffff0000/!\\ NOTE THAT IT START WHEN THE|r"
 L["H_trigger5"] = "|cffff0000TRIGGER SHOWS, NOT WHENT IT DISAPEAR.|r"
 L["H_duration"] = "Duration for ICD in second"
+L["H_timeleft"] = "Only show if time remaining is below. Leave empty or 0 to disable."
 L["H_icon1"] = "Sorry, but the icon config is for"
 L["H_icon2"] = "|cffff0000ADVANCED USERS|r and";
 L["H_icon3"] = "have to be done by LUA."

@@ -11,7 +11,7 @@ C["Filger_Config"] = {
 	["autoupdate"] = false,								-- Automaticaly update the config.
 	["Config Version"] = {								-- To warn thoses who use ingame Config that their database is outdated.
 														-- We need to filter the class, if MAGE is updated but not DK why should we make a reset for the DK ???
-		["MAGE"] = 1,									-- Mages changes
+		["MAGE"] = 1.1,									-- Mages changes
 		["DEATHKNIGHT"] = 1,							-- DK changes
 		["PRIEST"] = 1,									-- Priest changes
 		["WARLOCK"] = 1,								-- Locks changes
@@ -21,7 +21,8 @@ C["Filger_Config"] = {
 		["WARRIOR"] = 1,								-- War changes
 		["ROGUE"] = 1,									-- Rogue changes
 		["PALADIN"] = 1.2,								-- Paladin changes
-		["ALL"] = 1,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
+		["MONK"] = 1,									-- Monk changes
+		["ALL"] = 1.3,									-- ALL/PVP/PVE and everything elses changes (reset for every class)
 	}
 }
 
@@ -30,6 +31,24 @@ C["Filger_Cooldown"] = { -- will be disabled if Tukui / ElvUI / OmniCC / ncCoold
 	["treshold"] = 8,									-- show decimal under X seconds and text turn red
 	["fontsize"] = 20,									--the base font size to use at a scale of 1
 }
+
+--	List of available options for Panels:
+--		name
+--			= "name of the panel"
+--			(this name will be used in Spells options part where you specify what panel do you want to attach your icons (or bars) to)
+--		w
+--			= width of the panel in pixels
+--		h
+--			= height of the panel in pixels
+--		anchor
+--			= what point of the panel is used to determine panels position
+--			("TOP" / "BOTTOM" / "LEFT" / "RIGHT" / "CENTER" / "TOPLEFT" / "TOPRIGHT" / "BOTTOMLEFT" / "BOTTOMRIGHT"
+--		x
+--			= default anchor's position relative to the center of the screen, horizontal, in pixels
+--		y
+--			= default anchor's position relative to the center of the screen, vertical, in pixels
+--		text
+--			= label text that will be displayed on the panel
 
 --Sizes
 local EnhanceS = 37 			-- Buff from trinkets, racials and others
@@ -133,8 +152,62 @@ C["Filger_Panels"] = {
 	},
 }
 
+--	List of available options:
+--		spellID	
+--			= any number up to 132122 or so
+--			(every spell has its unique spellID)
+--			(you can find out spellID by looking up the spell on wowhead and checking URL of the page - http://www.wowhead.com/spell=5782 - in this case spellID = 5782)
+--		unitId
+--			= "player" / "target" / "focus" / "pet" / "party1" / "arena1" / "targettarget" / "targettargettarget" / "party1target" / "pettarget" / "focustarget" 
+--			(note that you cannot use "targetfocus" and other similar options as you can only see your own focus)
+--		caster
+--			= "all" / "player" / "target" / "pet"
+--			(Whoever casted the spell. If set to all, anyone's spell get displayed)
+--		filter
+--			= "BUFF" / "DEBUFF" / "IBUFF" / "IDEBUFF" / "CD" / "ACD" / "ICD"
+--			(BUFF checks if buff is applied)
+--			(DEBUFF checks if debuff is applied)
+--			(IBUFF checks if buff is NOT applied)
+--			(IDEBUFF checks if debuff is NOT applied)
+--			(CD checks if spell is on cooldown)
+--			(ACD checks if spell is NOT on cooldown)
+--			(ICD checks for internal cooldown of the spell)
+--		trigger
+--			= "BUFF" / "DEBUFF"
+--			(works only with filter option set to ICD)
+--			(specifies if triggering spell applies buff or debuff)
+--		duration
+--			= any number (in seconds)
+--			(works only with filter option set to ICD)
+--			(specifies how long internal CD is)
+--		timeleft
+--			= any number (in seconds)
+--			(works only with filter option set to buff or debuff)
+--			(show icon only if time left is below)
+--		slotID
+--			= any number lower than 24
+--			(works only with filter option set to CD / ICD)
+--			(if slotID is specified, icon graphics will change to icon of item equipped in slot XX)
+--			(1 = head, 2 = neck, 3 = shoulder, 4 = shirt, 5 = chest, 6 = belt, 7 = legs, 8 = feet, 9 = wrist, 10 = gloves, 
+--			11 = finger 1, 12 = finger 2, 13 = trinket 1, 14 = trinket 2, 15 = back, 16 = main hand, 17 = off hand, 18 = ranged?, 19 = tabard, 
+--			20 = first bag (the rightmost one), 21 = second bag, 22 = third bag, 23 = fourth bag (the leftmost one)
+--		incombat
+--			= true
+--			(if incombat option is set to true, icon or bar will only show if in combat)
+--		spec
+--			= 1 / 2 / 3 / 4
+--			(icon or bar will only show if spec option is not specified or spec option matches your specialization number)
+--		absID
+--			= true
+--			(if set to true, spell will get displayed only if spell ID matches with spellID option, otherwise it will display if names match)
+--		icon
+--			= [[Interface\Icons\Spell_Frost_Frost]] / [[Interface\Icons\spell_mage_infernoblast]]
+--			(changes icon graphics to a texture path specified in this option)
+--			(specifying icon option, slotID option will cease to function)
+--			(you can list through thousands of icons at http://wowprogramming.com/utils/artbrowser/Interface/ICONS.list)
+
 C["Filger_Spells"] = {
-	["DEATHKNIGHT"] = {  ---------------------------------------------------- Death Knight -- A REVOIR
+	["DEATHKNIGHT"] = {  ---------------------------------------------------- Death Knight
 		{
 			Name = "Cooldown",
 			Enable = true,
@@ -290,9 +363,7 @@ C["Filger_Spells"] = {
 			-- Fire Blast
 			--{ spellID = 2136, filter = "CD" },
 			-- Counterspell
-			{ spellID = 2139, filter = "CD" }, 
-			-- Flame Orb
-			--{ spellID = 82731, filter = "CD" },
+			{ spellID = 2139, filter = "CD" },
 			-- Deep Freeze
 			{ spellID = 44572, filter = "CD" }, 
 			-- Arcane Power
@@ -300,7 +371,13 @@ C["Filger_Spells"] = {
 			-- Icy Veins
 			--{ spellID = 12472, filter = "CD" }, 
 			-- Combustion
-			{ spellID = 11129, filter = "CD" }, 
+			--{ spellID = 11129, filter = "CD" }, 
+			-- Alter Time
+			--{ spellID = 110909, filter = "CD" }, 
+			-- Presence of Mind
+			--{ spellID = 12043, filter = "CD" }, 
+			-- Incanter's Ward
+			--{ spellID = 1463, filter = "CD" }, 
 			-- Cauterize
 			{ spellID = 87023, filter = "ICD", trigger = "DEBUFF", duration = 120 },
 		},	
@@ -335,6 +412,14 @@ C["Filger_Spells"] = {
 			{ spellID = 110960, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Blazing Speed
 			{ spellID = 108843, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Replendish Mana
+			{ spellID = 5405, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Rune of Power
+			{ spellID = 116014, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Incanter's Ward
+			{ spellID = 1463, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Invoker's Energy
+			{ spellID = 116257, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Mage Procs",
@@ -359,6 +444,10 @@ C["Filger_Spells"] = {
 			{ spellID = 44544, unitId = "player", caster = "player", filter = "BUFF"},
 			-- Cauterize	
 			{ spellID = 87023, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Glyph of Remove Curse
+			{ spellID = 115701, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Invoker's Absorption
+			{ spellID = 116267, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Target Buffs and Debuffs",
@@ -413,8 +502,14 @@ C["Filger_Spells"] = {
 			Size = 47, 
 			setPoint = { "BOTTOM", "iFilgerInvertAura", 0, 22 },
 			
+			-- Rune of Power
+			{ spellID = 116014, unitId = "player", caster = "player", filter = "IBUFF", known = 116011 },
+			-- Invoker's Energy
+			{ spellID = 116257, unitId = "player", caster = "player", filter = "IBUFF", known = 114003 },
 			-- Pyromaniac (fire damage increased by 10%, applyied by bomb)
 			{ spellID = 132210, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = true, spec = 2 },
+			-- Frost Bomb
+			{ spellID = 112948, unitId = "target", caster = "player", filter = "IDEBUFF", incombat = true, spec = 3 },
 		},
 		{
 			Name = "Focus",  
@@ -428,7 +523,7 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 			
 			-- Sheep mage
-			{ spellID = 118, unitId = "focus", caster = "player", filter = "DEBUFF" },
+			-- { spellID = 118, unitId = "focus", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "Interrupt",  
@@ -610,8 +705,14 @@ C["Filger_Spells"] = {
 			{ spellID = 124430, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Glyph of Mind Spike
 			{ spellID = 81292, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Temporal Boon - 2T13 Heal
-			{ spellID = 105826, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Divine Insight : PoM
+			{ spellID = 123267, unitId = "player", caster = "all", filter = "BUFF", absID = true },
+			-- Twist of Fate
+			{ spellID = 123254, unitId = "player", caster = "player", filter = "BUFF", spec = 1 },
+			-- Twist of Fate
+			{ spellID = 123254, unitId = "player", caster = "player", filter = "BUFF", spec = 2 },
+			-- Angelic Bulwark
+			{ spellID = 114214, unitId = "player", caster = "player", filter = "BUFF" },
 		},	
 		{
 			Name = "Target Buffs and Debuffs",
@@ -667,9 +768,9 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Shackle Undead
-			{ spellID = 9484, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 9484, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Psychic Scream
-			{ spellID = 8122, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 8122, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Shadow Word: Pain
 			{ spellID = 589, unitId = "focus", caster = "player", filter = "DEBUFF" },
 			-- Devouring Plague
@@ -864,11 +965,11 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Havoc
-			{ spellID = 80240, unitId = "focus", caster = "player", filter = "DEBUFF" },	
+			{ spellID = 80240, unitId = "focus", caster = "player", filter = "DEBUFF" },
 			-- Fear
-			{ spellID = 5782, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 5782, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Banish
-			{ spellID = 710, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 710, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["DRUID"] = { ---------------------------------------------------- Druid
@@ -1056,9 +1157,9 @@ C["Filger_Spells"] = {
 			-- Hibernate
 			{ spellID = 2637, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Entangling Roots
-			{ spellID = 339, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 339, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Cyclone
-			{ spellID = 33786, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 33786, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},
 	["HUNTER"] = { ---------------------------------------------------- Hunter
@@ -1181,11 +1282,11 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Wyvern Sting
-			{ spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 19386, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Silencing Shot
-			{ spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 34490, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Freezing Trap
-			{ spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 3355, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["ROGUE"] = { ---------------------------------------------------- Rogue
@@ -1365,7 +1466,7 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerFocusBuffs", 0, -22 },
 
 			-- Blind
-			{ spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 2094, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Sap
 			{ spellID = 6770, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Gouge
@@ -1464,8 +1565,6 @@ C["Filger_Spells"] = {
 			{ spellID = 16188, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Maelstorm Weapon
 			{ spellID = 53817, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Clearcasting
-			{ spellID = 16246, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 53390, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unleash Life
@@ -1535,9 +1634,9 @@ C["Filger_Spells"] = {
 			-- Earth Shield
 			{ spellID = 974, unitId = "focus", caster = "player", filter = "BUFF" },
 			-- Hex
-			{ spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 51514, unitId = "focus", caster = "all", filter = "DEBUFF" },
 			-- Bind Elemental
-			{ spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
+			-- { spellID = 76780, unitId = "focus", caster = "all", filter = "DEBUFF" },
 		},
 	},	
 	["PALADIN"] = { ---------------------------------------------------- Paladin
@@ -1886,6 +1985,16 @@ C["Filger_Spells"] = {
 			{ spellID = 122278, filter = "CD" },
 			-- Leg Sweep
 			{ spellID = 119381, filter = "CD" },
+			-- Rising Sun Kick, Windwalker
+			{ spellID = 107428, filter = "CD" },
+			-- Chi Wave, Talent
+			{ spellID = 132467, filter = "CD" },
+			-- Tiger's Lust, Talent
+			{ spellID = 116841, filter = "CD" },
+			-- Renewing Mist, Mistweaver (very important)
+			{ spellID = 119611, filter = "CD" },
+			-- Mana Tea, Mistweaver (very important)
+			{ spellID = 115294, filter = "CD" },
 		},
 		{
 			Name = "Monk Buffs",
@@ -2066,6 +2175,7 @@ C["Filger_Spells"] = {
 
 		-- Trinket Procs
 
+		--[[
 			-- 333/346
 			-- Cleansing Tears (Tear of Blood)
 			{ spellID = 91139, unitId = "player", caster = "player", filter = "BUFF" },
@@ -2213,6 +2323,7 @@ C["Filger_Spells"] = {
 			{ spellID = 125483, unitId = "player", caster = "all", filter = "BUFF" },
 
 		-- Item Enchants - Enchanting
+		--[[
 			-- Heartsong / Gesang des Herzens
 			{ spellID = 74224, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Avalanche / Lawine
@@ -2223,8 +2334,10 @@ C["Filger_Spells"] = {
 			{ spellID = 74241, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Landside
 			{ spellID = 74245, unitId = "player", caster = "all", filter = "BUFF" },
+			]]
 
 		-- Potions
+		--[[
 			-- Speed / Geschwindigkeit - Potion of Speed
 			{ spellID = 53908, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Wild Magic / Wilde Magie - Potion of Wild Magic
@@ -2322,7 +2435,7 @@ C["Filger_Spells"] = {
 	["PVP"] = {
 		{
 --			Tons of SpellIDs taken from LoseControl so credit to Kouri 
---			Here we track pvp buffs on our target							 
+--			Here we track pvp buffs on our target
 			Name = "ENEMY PVP BUFF",
 			Enable = true,
 			Direction = "UP",
@@ -2453,7 +2566,6 @@ C["Filger_Spells"] = {
 			-- Aspect of the Cheetah
 			{ spellID = 5118, unitId = "target", caster = "all", filter = "BUFF" },
 			
-			
 			-- Death Knight --
 			-- Anti-Magic Shell
 			{ spellID = 48707, unitId = "target", caster = "all", filter = "BUFF" },
@@ -2565,7 +2677,11 @@ C["Filger_Spells"] = {
 			{ spellID = 88448, unitId = "target", caster = "all", filter = "BUFF" },
 			-- Soulstone
 			{ spellID = 20707, unitId = "target", caster = "all", filter = "BUFF" },
-			
+			-- Dark Apotheosis
+			{ spellID = 114168, unitId = "target", caster = "all", filter = "BUFF" },
+			-- Metamorphosis
+			{ spellID = 103958, unitId = "target", caster = "all", filter = "BUFF" },
+
 			-- All
 			-- Warsong flag
 			{ spellID = 23333, unitId = "target", caster = "all", filter = "BUFF" },
