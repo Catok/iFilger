@@ -132,9 +132,9 @@ C["Filger_Panels"] = {
 	},	
 	["WARRIOR"] = {
 		{ name = "iFilgerCooldowns", w = 80, h = 20, anchor = "BOTTOMLEFT", x = -295, y = -515, text = "Cooldowns" },
-		{ name = "iFilgerPlayerBuff", w = 100, h = 21, anchor = "BOTTOMLEFT", x = -85, y = -250, text = "Player Buffs" },
-		{ name = "iFilgerProcs", w = 45, h = 21, anchor = "BOTTOMLEFT", x = -85, y = -290, text = "Procs" },
-		{ name = "iFilgerBuffDebuff", w = 170, h = 21, anchor = "TOPLEFT", x = 86, y = -269, text = "Target Buffs/Debuffs" },
+		{ name = "iFilgerPlayerBuff", w = 40, h = 21, anchor = "TOPLEFT", x = -127, y = -269, text = "Buffs" },
+		{ name = "iFilgerProcs", w = 40, h = 21, anchor = "TOPLEFT", x = -85, y = -274, text = "Procs" },
+		{ name = "iFilgerBuffDebuff", w = 105, h = 21, anchor = "TOPLEFT", x = 86, y = -269, text = "T Buffs/Debuffs" },
 		--{ name = "iFilgerTempBuffs", w = 150, h = 20, anchor = "BOTTOMLEFT", x = -306, y = -208, text = "Temp Buffs" },
 	},
 	["MONK"] = {
@@ -143,10 +143,10 @@ C["Filger_Panels"] = {
 		{ name = "iFilgerBuffDebuff", w = 170, h = 21, anchor = "TOPLEFT", x = 86, y = -269, text = "Target Buffs/Debuffs" },
 	},
 	["ALL"] = {
-		{ name = "iFilgerEnhancements", w = 110, h = 20, anchor = "BOTTOMRIGHT", x = -47, y = -359, text = "Enhancements" },
-		{ name = "iFilgerPlayerDebuffs", w = 150, h = 20, anchor = "CENTER", x = 0, y = -155, text = "Pvp Player Debuffs" },
-		{ name = "iFilgerPvpTargetDebuffs", w = 155, h = 20, anchor = "BOTTOMLEFT", x = 38, y = -430, text = "Pvp Target Debuffs" },
-		{ name = "iFilgerPvpTargetBuffs", w = 140, h = 20, anchor = "BOTTOMRIGHT", x = 36, y = -430, text = "Pvp Target Buffs" },
+		{ name = "iFilgerEnhancements", w = 85, h = 20, anchor = "BOTTOMRIGHT", x = -47, y = -359, text = "Enhancements" },
+		{ name = "iFilgerPlayerDebuffs", w = 90, h = 20, anchor = "CENTER", x = 0, y = -155, text = "Pvp P Debuffs" },
+		{ name = "iFilgerPvpTargetDebuffs", w = 90, h = 20, anchor = "BOTTOMLEFT", x = 38, y = -430, text = "Pvp T Debuffs" },
+		{ name = "iFilgerPvpTargetBuffs", w = 80, h = 20, anchor = "BOTTOMRIGHT", x = 36, y = -430, text = "Pvp T Buffs" },
 		{ name = "iFilgerTanksCDs", w = 85, h = 20, anchor = "BOTTOM", x = 0, y = 100, text = "Tanks CDs" },
 		{ name = "iFilgerTanksCDsFocus", w = 135, h = 20, anchor = "TOPRIGHT", x = -220, y = 53, text = "Tanks focus CDs" },
 	},
@@ -250,7 +250,9 @@ C["Filger_Spells"] = {
 			-- Outbreak
 			--{ spellID = 77575, filter = "CD" }, 
 			-- Dark Simulacrum
-			--{ spellID = 77606, filter = "CD" }, 
+			--{ spellID = 77606, filter = "CD" },
+			-- Shroud of Purgatory
+			{spellID = 116888, filter = "ICD", trigger = "BUFF", duration = 180},
 		},	
 		{
 			Name = "DK Buffs",
@@ -556,72 +558,12 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Angelic Bulwark
-			--{ spellID = 114214, filter = "ICD", trigger = "BUFF", duration = 90 },
-			-- Archangel
-			--{ spellID = 81700, filter = "CD" },
-			-- Cascade
-			--{ spellID = 121135, filter = "CD" },
-			-- Circle of Healing
-			--{ spellID = 34861, filter = "CD" },
-			-- Desperate Prayer
-			--{ spellID = 19236, filter = "CD" },
-			-- Dispersion
-			--{ spellID = 47585, filter = "CD" }, 
-			-- Divine Hymn
-			--{ spellID = 64843, filter = "CD" },
-			-- Divine Star
-			--{ spellID = 110744, filter = "CD" },
-			-- Dominate Mind
-			--{ spellID = 605, filter = "CD" },
-			-- Fade
-			--{ spellID = 586, filter = "CD" },
-			-- Fear Ward
-			--{ spellID = 6346, filter = "CD" },
-			-- Guardian Spirit
-			--{ spellID = 47788, filter = "CD" }, 
-			-- Halo
-			--{ spellID = 120517, filter = "CD" },
-			-- Holy Word: Chastise
-			--{ spellID = 88625, filter = "CD" },
-			-- Hymn of Hope
-			--{ spellID = 64901, filter = "CD" },
-			-- Inner Focus
-			--{ spellID = 89485, filter = "CD" }, 
-			-- Leap of Faith
-			--{ spellID = 73325, filter = "CD" },
-			-- Lightwell
-			--{ spellID = 724, filter = "CD" },
 			-- Mass Dispel
 			{ spellID = 32375, filter = "CD" },
-			-- Penance
-			--{ spellID = 47540, filter = "CD" }, 
-			-- Power Infusion
-			--{ spellID = 10060, filter = "CD" },
 			-- Power Word: Barrier
 			{ spellID = 62618, filter = "CD" },
-			-- Prayer of Mending
-			--{ spellID = 33076, filter = "CD" },
-			-- Psychic Horror
-			--{ spellID = 64044, filter = "CD" },
-			-- Psychic Scream
-			--{ spellID = 8122, filter = "CD" }, 
 			-- Purify
 			{ spellID = 527, filter = "CD" },
-			-- Shadowfiend
-			--{ spellID = 34433, filter = "CD" },
-			-- Silence
-			--{ spellID = 15487, filter = "CD" },
-			-- Spectral Guise
-			--{ spellID = 112833, filter = "CD" },
-			-- Spirit Shell
-			--{ spellID = 109964, filter = "CD" },
-			-- Vampiric Embrace
-			--{ spellID = 15286, filter = "CD" },
-			-- Void Tendrils
-			--{ spellID = 108920, filter = "CD" },
-			-- Void Shift
-			--{ spellID = 108968, filter = "CD" },
 		},
 		{
 			Name = "Priest Buffs",
@@ -1047,6 +989,8 @@ C["Filger_Spells"] = {
 			
 			-- Nature's Vigil
 			{ spellID = 124974, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Heart of the Wild
+			{ spellID = 108294, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Berserk
 			{ spellID = 106951, unitId = "player", caster = "player", filter = "BUFF", absID = true },
 			-- Tiger's Fury
@@ -1301,22 +1245,10 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Sprint
-			{ spellID = 2983, filter = "CD" },
-			-- Cloak of Shadows
-			--{ spellID = 31224, filter = "CD" },
-			-- Tricks of the Trade
-			--{ spellID = 57934, filter = "CD" },
-			-- Kidney Shot
-			--{ spellID = 408, filter = "CD" },
+			-- Shiv
+			{ spellID = 5938, filter = "CD" },
 			-- ShadowStep
 			{ spellID = 36554, filter = "CD" },
-			-- Shadow Dance
-			--{ spellID = 51713, filter = "CD" },
-			-- Vendetta
-			--{ spellID = 14177, filter = "CD" },
-			-- Vanish
-			--{ spellID = 1856, filter = "CD" },
 			-- Cheating Death ICD
 			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
@@ -1434,6 +1366,8 @@ C["Filger_Spells"] = {
 			{ spellID = 113746, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Dismantle
 			{ spellID = 51722, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Paralytic Poison
+			{ spellID = 113952, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Deadly Poison
 			{ spellID = 2818, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Mind-numbing Poison
@@ -1651,24 +1585,8 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Divine Plea
-			{ spellID = 54428, filter = "CD" },
-			-- Lay on Hands
-			--{ spellID = 633, filter = "CD" },
-			-- Divine Shield
-			{ spellID = 642, filter = "CD" },
-			-- Divine Protection
-			--{ spellID = 498, filter = "CD" },
-			-- Avenging Wrath
-			--{ spellID = 31884, filter = "CD" },
-			-- Guardian of Ancient Kings
-			--{ spellID = 86669, filter = "CD" },
-			-- Divine Favor
-			--{ spellID = 31842, filter = "CD" },
-			-- Devotion Aura
-			--{ spellID = 31821, filter = "CD" },
-			-- Hand of Freedom
-			--{ spellID = 1044, filter = "CD" },
+			-- Blinding Light
+			{ spellID = 115750, filter = "CD" },
 		},	
 		{
 			Name = "Paladin Buffs",
@@ -1802,20 +1720,13 @@ C["Filger_Spells"] = {
 			Size = CdS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 			
-			-- Recklesness
-			--{ spellID = 1719, filter = "CD" },
-			-- Berserker rage
-			--{ spellID = 18499, filter = "CD" },  
 			-- Last Stand
 			{ spellID = 12975, filter = "CD" },	
 			-- Taunt
 			{ spellID = 355, filter = "CD" },	
 			-- Commanding Shout
 			{ spellID = 469, filter = "CD" },	
-			-- Heroic Leap	  
-			--{ spellID = 6544, filter = "CD" },
-			-- Dragon Roar
-			--{ spellID = 118000, filter = "CD" }
+
 		},
 		{
 			Name = "Warrior Buffs",
@@ -1826,7 +1737,7 @@ C["Filger_Spells"] = {
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = PBS,
-			setPoint = { "TOPLEFT", "iFilgerPlayerBuff", -38, 0 },
+			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
 			
 			-- Shield Block
 			{ spellID = 2565, unitId = "player", caster = "player", filter = "BUFF" },
@@ -1856,13 +1767,13 @@ C["Filger_Spells"] = {
 		{
 			Name = "Warrior Procs",
 			Enable = true,
-			Direction = "LEFT",
+			Direction = "UP",
 			Interval = 3,
 			Mode = "ICON",
 			Alpha = 1,
 --			BarWidth = 150,
 			Size = PPS, 
-			setPoint = { "TOPLEFT", "iFilgerProcs", -43, 0 },
+			setPoint = { "BOTTOMLEFT", "iFilgerProcs", 0, 22 },
 
 			-- Bloodsurge
 			{ spellID = 46916, unitId = "player", caster = "all", filter = "BUFF" },
@@ -1892,21 +1803,23 @@ C["Filger_Spells"] = {
 			Size = PTDBS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 
-			-- Colossus Smash
-			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Weakened Armor
-			{ spellID = 113746, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Charge Stun
-			{ spellID = 7922, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Shockwave
-			{ spellID = 46968, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Hamstring
 			{ spellID = 1715, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Piercing Howl
 			{ spellID = 12323, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Sluggish (Slow from Herioc Strike glyph)
+			{ spellID = 129923, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Colossus Smash
+			{ spellID = 86346, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Charge Stun
+			{ spellID = 7922, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Shockwave
+			{ spellID = 46968, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Deep Wounds
 			{ spellID = 115767, unitId = "target", caster = "all", filter = "DEBUFF" },
-			
+
+			-- Weakened Armor
+			{ spellID = 113746, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Weakened Blows
 			{ spellID = 115798, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Curse of Enfeeblement (Warlock)
@@ -2175,70 +2088,107 @@ C["Filger_Spells"] = {
 
 		-- Trinket Procs
 
-		--[[
-			-- 333/346
-			-- Cleansing Tears (Tear of Blood)
-			{ spellID = 91139, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Witching Hour
-			{ spellID = 90887, unitId = "player", caster = "player", filter = "BUFF" },
-		
-			-- 359/372/379 4.0
-			-- Pattern of Light (Mandala of Stirring Patterns)
-			{ spellID = 91192, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Image of Immortality (Mirror of Broken Images)
-			{ spellID = 92222, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Dire Magic (Bell of Enraging Resonance)
-			{ spellID = 91007, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Battle Magic (Stump of Time)
-			{ spellID = 91047, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Volcanic Destruction (darkmoon)
-			{ spellID = 89091, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Heart of Rage
-			{ spellID = 92345, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Heart's Revelation
-			{ spellID = 91027, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Heart's Judgement
-			{ spellID = 91041, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Soul Power (Soul Casket)
-			{ spellID = 91019, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Revelation (Theralion Mirror)
-			{ spellID = 91024, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Celerity (Shard of Woe Heroic)
-			{ spellID = 91173, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Darkmoon Cards (Proc)
+			{ spellID = 128985, unitId = "player", caster = "player", filter = "BUFF" },
 
-			-- 365/378/384/391/397 4.2
-			-- Soul Fragment (Necromatic Focus)
-			{ spellID = 96962, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Moonwell Phial
-			{ spellID = 101156, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blessing of the Moonwell (Moonwell Chalice)
-			{ spellID = 100403, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Charged Blows (Ricket's Magnetic Fireball)
-			{ spellID = 101515, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Matrix Restabilizer
-			{ spellID = 96976, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Accelerated
-			{ spellID = 96980, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Ancient Petrified Seed
-			{ spellID = 97009, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blessing of Khaz'goroth (Apparatus of Khaz'goroth)
-			{ spellID = 96934, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Essence of the Eternal Flame
-			{ spellID = 97010, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Fiery Quintessence
-			{ spellID = 97008, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Victorious  (Jaws of Defeat)
-			{ spellID = 96907, unitId = "player", caster = "player", filter = "BUFF", absID = true  },
-			-- Mark of the Firelord  (Rune of Zeth)
-			{ spellID = 97007, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Devour  (The Hungerer)
-			{ spellID = 96911, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Weight of a Feather (Scales of Life)
-			{ spellID = 96879, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Titanic Power (Apparatus of Khaz'goroth)
-			{ spellID = 96923, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Tank
+			-- Stuff of Nightmares (Dodge, Proc)
+			{ spellID = 126646, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Vial of Dragon's Blood (Dodge, Proc)
+			{ spellID = 126533, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Jade Warlord Figurine (Mastery, Use)
+			{ spellID = 126597, unitId = "player", caster = "player", filter = "BUFF" },
 
-			-- Brewfeast
+			-- Physical Strength DPS
+			-- Helmbreaker Medallion (Crit, Use)
+			{ spellID = 136084, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Darkmist Vortex (Haste, Proc)
+			{ spellID = 126657, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Lei Shin's Final Orders (Strength, Proc)
+			{ spellID = 126582, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Jade Charioteer Figurine (Strength, Use)
+			{ spellID = 126599, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Iron Belly Wok (Haste, Use)
+			{ spellID = 129812, unitId = "player", caster = "player", filter = "BUFF" },
+			
+			-- Physical Agility DPS
+			-- Arrowflight Medallion (Crit, Use)
+			{ spellID = 136086, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Terror in the Mists (Crit, Proc)
+			{ spellID = 126649, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Jade Bandit Figurine (Haste, Use)
+			{ spellID = 126599, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Bottle of Infinite Stars (Agility, Proc)
+			{ spellID = 126554, unitId = "player", caster = "player", filter = "BUFF" },
+			
+			-- Caster General
+			-- Shock-Charger Medallion Figurine (Intellect, Use)
+			{ spellID = 136082, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Jade Magistrate Figurine (Crit, Use)
+			{ spellID = 126605, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Caster DPS
+			-- Essence of Terror (Haste, Proc)
+			{ spellID = 126659, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Light of the Cosmos (Intellect, Proc)
+			{ spellID = 126577, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Caster Heal
+			-- Qin-xi's Polarizing Seal (Intellect, Proc)
+			{ spellID = 126588, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- PvP Trinkets
+			-- PvP Trinkets (Health, Use)
+			{ spellID = 126697, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Strength, Use)
+			{ spellID = 126679, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Strength, Proc)
+			{ spellID = 126700, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Agility, Use)
+			{ spellID = 126690, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Agility, Proc)
+			{ spellID = 126707, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Spell Power, Use)
+			{ spellID = 126683, unitId = "player", caster = "player", filter = "BUFF" },
+			-- PvP Trinkets (Spell Power, Proc)
+			{ spellID = 126705, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Item Enchants - Engineering
+			-- Synapse Springs
+			{ spellID = 126734, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Phase Fingers
+			{ spellID = 108788, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Nitro Boosts
+			{ spellID = 54861, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Parachute
+			{ spellID = 55001, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Flintlocke's Woodchucker
+			{ spellID = 99621, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Herbalism
+			-- Lifeblood
+			{ spellID = 55503, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Item Enchants - Tailoring
+			-- Darkglow
+			{ spellID = 125482, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Lightweave (Intellect)
+			{ spellID = 125487, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Swordguard Embroidery (Attack Power)
+			{ spellID = 125489, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Item Enchants - Enchanting
+
+			-- River's Song (Dodge)
+			{ spellID = 116660, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Dancing Steel (Strength/Agility)
+			{ spellID = 120032, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Jade Spirit (Intellect + Spirit)
+			{ spellID = 104993, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Mirror Scope (Crit)
+			{ spellID = 109092, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Lord Blastington's Scope of Doom (Agility)
+			{ spellID = 109085, unitId = "player", caster = "player", filter = "BUFF" },
+
+		-- Brewfeast
 			-- Now is the time! (Mithril Stopwatch)
 			{ spellID = 101291, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Drunken Evasiveness (Brawler's Trophy)
@@ -2250,112 +2200,17 @@ C["Filger_Spells"] = {
 			-- Stay of Execution (Stay of Execution)
 			{ spellID = 96988, unitId = "player", caster = "player", filter = "BUFF" },
 
-			-- 378/384/397/401 4.3
-			-- Foul Gift (Foul Gift of the Demon Lord)
-			{ spellID = 102662, unitId = "player", caster = "player", filter = "BUFF", absID = true },
-			-- Foul Gift (Foul Gift of the Demon Lord)
-			{ spellID = 109908, unitId = "player", caster = "player", filter = "DEBUFF", absID = true },
-			-- Titanic Strength (Eye of Unmaking/Rotting Skull)
-			{ spellID = 109750, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Expansive Mind (Heart of Unliving)
-			{ spellID = 109813, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Preternatural Evasion (Resolve of Undying)
-			{ spellID = 109782, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Combat Mind (Will of Unbinding)
-			{ spellID = 109795, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Combat Trance (Wrath of Unchaining)
-			{ spellID = 109719, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Find Weakness (Creche of the Final Dragon)
-			{ spellID = 109744, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Ultimate Power (Bottled Wishes/Reflection of the Light)
-			{ spellID = 109792, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Elusive (Fire of the Deep)
-			{ spellID = 109779, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Velocity (Insignia of the Corrupted Mind/Seal of the Seven Signs)
-			{ spellID = 109789, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Agile (Kiroptyric Sigil)
-			{ spellID = 109715, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Master Tactician (Soulshifter Vortex)
-			{ spellID = 109776, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Slowing the Sands - weapon caster DW
-			{ spellID = 107804, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Beast Fury - weapon agi DW
-			{ spellID = 109861, unitId = "player", caster = "player", filter = "BUFF" },
-			
-		-- PvP Trinkets
-			-- Call of Conquest / Badge of Conquest
-			{ spellID = 99711, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Dominance / Badge of Dominance
-			{ spellID = 99712, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of Victory / Badge of Victory
-			{ spellID = 99713, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tremendous Fortitude / Battlemaster Trinket S10-371
-			{ spellID = 99714, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Conquest / Insignia of Conquest
-			{ spellID = 99717, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Dominance / Insignia of Dominance
-			{ spellID = 99719, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Surge of Victory / Insignia of Victory
-			{ spellID = 99721, unitId = "player", caster = "player", filter = "BUFF" },
-
-		-- Item Enchants - Engineering
-			-- Hyperspeed Accelerators / Hypergeschwindigkeitsbeschleuniger
-			{ spellID = 54758, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Synapse Springs / Synapsenfedern
-			{ spellID = 96230, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Nitro Boots ( or should I say Belt? )
-			{ spellID = 54861, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Grounded Plasma Shield 
-			{ spellID = 82626, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Flintlocke's Woodchucker
-			{ spellID = 99621, unitId = "player", caster = "player", filter = "BUFF" },
-
-		-- Herbalism
-			-- Lifeblood
-			{ spellID = 55503, unitId = "player", caster = "player", filter = "BUFF" },
-
-		-- Item Enchants - Tailoring
-			-- Darkglow
-			{ spellID = 125482, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Lightweave
-			{ spellID = 125487, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Swordguard
-			{ spellID = 125483, unitId = "player", caster = "all", filter = "BUFF" },
-
-		-- Item Enchants - Enchanting
-		--[[
-			-- Heartsong / Gesang des Herzens
-			{ spellID = 74224, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Avalanche / Lawine
-			{ spellID = 74196, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Hurricane / Hurrikan
-			{ spellID = 74221, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Power Torrent
-			{ spellID = 74241, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Landside
-			{ spellID = 74245, unitId = "player", caster = "all", filter = "BUFF" },
-			]]
-
 		-- Potions
-		--[[
-			-- Speed / Geschwindigkeit - Potion of Speed
-			{ spellID = 53908, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Wild Magic / Wilde Magie - Potion of Wild Magic
-			{ spellID = 53909, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Earthen Armor / Irdene Rüstung - Earthen Potion
-			{ spellID = 79475, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Volcanic Power
-			{ spellID = 79476, unitId = "player", caster = "all", filter = "BUFF" }, 
-			-- Golemblood Potion
-			{ spellID = 79634, unitId = "player", caster = "player", filter = "BUFF" },
-			
-		-- Rogue Legendary
-			-- Suffering -- Legendary buff
-			{ spellID = 109959, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Nightmare -- Legendary buff
-			{ spellID = 109955, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Shadows of the Destroyer -- Legendary buff
-			{ spellID = 109941, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Virmen's Bite
+			{spellID = 105697, unitId = "player", caster = "player", filter = "BUFF"},
+			-- Potion of Mogu Power
+			{spellID = 105706, unitId = "player", caster = "player", filter = "BUFF"},
+			-- Potion of the Jade Serpent
+			{spellID = 105702, unitId = "player", caster = "player", filter = "BUFF"},
+			-- Speed (Potion)
+			{spellID = 2379, unitId = "player", caster = "player", filter = "BUFF", absID = true},
+			-- Speed (BG)
+			{spellID = 23451, unitId = "player", caster = "all", filter = "BUFF", absID = true},
 		},
 		{
 			Name = "Racials", -- (racial)
@@ -2412,22 +2267,14 @@ C["Filger_Spells"] = {
 			Size = 37,
 			setPoint = { "BOTTOMRIGHT", "iFilgerCooldowns", 40, 0 },
 
-			-- Foul Gift (Foul Gift of the Demon Lord)
-			{ spellID = 102662, filter = "ICD", trigger = "BUFF", duration = 45, absID = true }, -- 60 ?
-			-- Indomitable (Indomitable Pride)
-			{ spellID = 108008, filter = "ICD", trigger = "BUFF", duration = 60 }, -- not sure of the spellID
-			-- Find Weakness (Creche of the Final Dragon)
-			{ spellID = 109744, filter = "ICD", trigger = "BUFF", duration = 115 }, -- guess
-			-- Master Tactician (Soulshifter Vortex) / May create problem for hunter... (i hate 'em btw)
-			{ spellID = 109776, filter = "ICD", trigger = "BUFF", duration = 115 }, -- guess
-			-- Velocity (Starcatcher Compass, Insignia of the Corrupted Mind, Seal of the Seven Signs)
-			{ spellID = 109789, filter = "ICD", trigger = "BUFF", duration = 115 }, -- exact (check in game with Proculas, couldn't go below)
 			-- Lightweave
 			{ spellID = 125487, filter = "ICD", trigger = "BUFF", duration = 61 }, -- it seems 62 with Proculas but with 30% proc chance, i guess 60. => ~25% uptime => 150k intel bonus instead of 80 for the others professions. :P
 			-- Power Torrent
 			{ spellID = 74241, filter = "ICD", trigger = "BUFF", duration = 45 }, -- exact (check in game with Proculas)
 			-- Tricks of the Trade (Thx Rogue)
 			--{ spellID = 57934, filter = "ICD", trigger = "BUFF", duration = 30 },
+			-- Dreadful Gladiator's Insignia of Victory
+			{ spellID = 126700, filter = "ICD", trigger = "BUFF", duration = 50 },
 
 --			{ spellID = 74241, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
@@ -3892,7 +3739,7 @@ C["Filger_Spells"] = {
 			--Leg Sweep
 			{ spellID = 119381, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Paralysis
-			{ spellID = 115078, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 115078, unitId = "target", caster = "all", filter = "DEBUFF", absID = true },
 			--Grapple Weapon
 			{ spellID = 117368, unitId = "target", caster = "all", filter = "DEBUFF" },
 			--Spear Hand Strike
