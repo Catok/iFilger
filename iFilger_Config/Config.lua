@@ -219,38 +219,6 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
  
-			-- Dark Command
-			--{ spellID = 56222, filter = "CD" }, 
-			-- Death Pact
-			--{ spellID = 48743, filter = "CD" },
-			-- Mind Freeze			
-			{ spellID = 47528, filter = "CD" },
-			-- Icebound Fortitude
-			--{ spellID = 48792, filter = "CD" }, 
-			-- Empower Rune Weapon
-			--{ spellID = 47568, filter = "CD" }, 
-			-- Death Grip
-			--{ spellID = 49576, filter = "CD" }, 
-			-- Raise Dead
-			--{ spellID = 46584, filter = "CD" }, 
-			-- Anti-Magic Shell
-			--{ spellID = 48707, filter = "CD" }, 
-			-- Death and Decay
-			--{ spellID = 43265, filter = "CD" }, 
-			-- Vampiric Blood
-			--{ spellID = 55233, filter = "CD" }, 
-			-- Dancing Rune Weapon
-			--{ spellID = 49028, filter = "CD" }, 
-			-- Lichborne
-			--{ spellID = 49039, filter = "CD" }, 
-			-- Anti-Magic Zone
-			--{ spellID = 51052, filter = "CD" }, 
-			-- Summon Gargoyle
-			--{ spellID = 49206, filter = "CD" }, 
-			-- Outbreak
-			--{ spellID = 77575, filter = "CD" }, 
-			-- Dark Simulacrum
-			--{ spellID = 77606, filter = "CD" },
 			-- Shroud of Purgatory
 			{spellID = 116888, filter = "ICD", trigger = "BUFF", duration = 180},
 		},	
@@ -362,24 +330,6 @@ C["Filger_Spells"] = {
 			--{ spellID = 33395, filter = "CD" },
 			-- Blast Wave
 			--{ spellID = 11113, filter = "CD" },
-			-- Fire Blast
-			--{ spellID = 2136, filter = "CD" },
-			-- Counterspell
-			{ spellID = 2139, filter = "CD" },
-			-- Deep Freeze
-			{ spellID = 44572, filter = "CD" }, 
-			-- Arcane Power
-			--{ spellID = 12042, filter = "CD" }, 
-			-- Icy Veins
-			--{ spellID = 12472, filter = "CD" }, 
-			-- Combustion
-			--{ spellID = 11129, filter = "CD" }, 
-			-- Alter Time
-			--{ spellID = 110909, filter = "CD" }, 
-			-- Presence of Mind
-			--{ spellID = 12043, filter = "CD" }, 
-			-- Incanter's Ward
-			--{ spellID = 1463, filter = "CD" }, 
 			-- Cauterize
 			{ spellID = 87023, filter = "ICD", trigger = "DEBUFF", duration = 120 },
 		},	
@@ -1419,32 +1369,6 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Stone Bulwark Totem
-			{ spellID = 108270, filter = "CD" },
-			-- Grounding Totem
-			--{ spellID = 8177, filter = "CD" },
-			-- Tremor Totem
-			{ spellID = 8143, filter = "CD" },
-			-- Spirit Link Totem
-			{ spellID = 98008, filter = "CD" },
-			-- Spiritwalker Grace
-			--{ spellID = 79206, filter = "CD" },
-			-- Unleash Elements
-			--{ spellID = 73680, filter = "CD" },
-			-- Shamanistic Rage
-			--{ spellID = 30823, filter = "CD" },
-			-- Mana Tide Totem
-			{ spellID = 16190, filter = "CD" },
-			-- Ancestral Swiftness
-			--{ spellID = 16188, filter = "CD" },
-			-- Fire Elemental Totem
-			--{ spellID = 2894, filter = "CD" },
-			-- Earth Elemental Totem
-			--{ spellID = 2062, filter = "CD" },
-			-- Bloodlust
-			--{ spellID = 2825, filter = "CD" },
-			-- Hex
-			--{ spellID = 51514, filter = "CD" },
 			-- Healing Rain
 			{ spellID = 73920, filter = "CD" },
 		},
@@ -1459,7 +1383,7 @@ C["Filger_Spells"] = {
 			setPoint = { "TOPLEFT", "iFilgerPlayerBuff", -38, 0 },
 
 			-- Earth Shield
-			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },		
+			{ spellID = 974, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Lightning Shield
 			{ spellID = 324, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Water Shield
@@ -1472,6 +1396,8 @@ C["Filger_Spells"] = {
 			{ spellID = 108271, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Elemental Mastery
 			{ spellID = 16166, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spiritwalker's Aegis
+			{ spellID = 131557, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Spiritwalker's Grace
 			{ spellID = 79206, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Ancestral Swiftness

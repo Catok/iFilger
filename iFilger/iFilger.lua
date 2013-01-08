@@ -20,6 +20,20 @@ local classcolor = RAID_CLASS_COLORS[class]
 iFilger["frame_list"] = {}
 local time, Update;
 
+-- Localize functions
+local UnitBuff = UnitBuff
+local UnitDebuff = UnitDebuff
+local GetTime = GetTime
+local GetSpellInfo = GetSpellInfo
+local GetSpellCooldown = GetSpellCooldown
+local GetItemInfo = GetItemInfo
+local GetInventoryItemLink = GetInventoryItemLink
+local GetInventoryItemCooldown = GetInventoryItemCooldown
+local GetSpecialization = GetSpecialization
+local InCombatLockdown = InCombatLockdown
+local CreateFrame = CreateFrame
+local _G, select, pairs, ipairs, table, math, getn, format, unpack = _G, select, pairs, ipairs, table, math, getn, format, unpack
+
 ------------------------------------------------------------
 -- Function to parse Buff name & ID
 ------------------------------------------------------------
@@ -490,6 +504,7 @@ function iFilger:OnEvent(event, unit)
 		local ptt = GetSpecialization()
 		local needUpdate = false
 		local id = self.Id
+		print(self:GetName())
 		if iFilger["spells"][id] then
 			for i = 1, #iFilger["spells"][id], 1 do
 				local data = iFilger["spells"][id][i]
@@ -786,7 +801,7 @@ function iFilger:UpdatesFramesList ()
 		for i = 1, #iFilger["spells"], 1 do
 			local data = iFilger["spells"][i]
 			local frame = CreateFrame("Frame", "iFilgerFrame"..i.."_"..data.Name, UIParent)
-			--I.Print("FRAME CREATED:"..data.Name)
+			I.Print("FRAME CREATED:"..data.Name)
 			frame.Id = i
 			frame.Name = data.Name
 			frame.Direction = data.Direction or "UP"
@@ -832,7 +847,7 @@ function iFilger:UpdatesFramesList ()
 			if(data.Mode ~= "ICON" and frame.Direction ~= "DOWN" and frame.Direction ~= "UP") then -- check if bar + right or left => ugly !
 				frame.Direction = "UP";
 			end
-			frame:RegisterEvent("SPELL_UPDATE_COOLDOWN")
+			--frame:RegisterEvent("SPELL_UPDATE_COOLDOWN")
 			frame:RegisterEvent("SPELL_UPDATE_USABLE")
 			frame:RegisterEvent("PLAYER_FOCUS_CHANGED")
 			frame:RegisterEvent("PLAYER_TARGET_CHANGED")
