@@ -296,6 +296,7 @@ function iFilger:DisplayActives()
 					aura.count:SetFont(C["media"].pixelfont, 26, "OUTLINE")
 					aura.count:Point("BOTTOMRIGHT", 10, -10)
 					aura.count:SetJustifyH("CENTER")
+					aura.count:SetParent(aura.cooldown)
 				end
 			else
 				if (aura.statusbar) then
@@ -504,7 +505,7 @@ function iFilger:OnEvent(event, unit)
 		local ptt = GetSpecialization()
 		local needUpdate = false
 		local id = self.Id
-		print(self:GetName())
+		--print(self:GetName())
 		if iFilger["spells"][id] then
 			for i = 1, #iFilger["spells"][id], 1 do
 				local data = iFilger["spells"][id][i]
@@ -801,7 +802,7 @@ function iFilger:UpdatesFramesList ()
 		for i = 1, #iFilger["spells"], 1 do
 			local data = iFilger["spells"][i]
 			local frame = CreateFrame("Frame", "iFilgerFrame"..i.."_"..data.Name, UIParent)
-			I.Print("FRAME CREATED:"..data.Name)
+			--I.Print("FRAME CREATED:"..data.Name)
 			frame.Id = i
 			frame.Name = data.Name
 			frame.Direction = data.Direction or "UP"
