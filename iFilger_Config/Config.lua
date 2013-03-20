@@ -2705,7 +2705,7 @@ C["Filger_Spells"] = {
 			--Leg Sweep
 			{ spellID = 119381, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Paralysis
-			{ spellID = 115078, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 115078, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			--Grapple Weapon
 			{ spellID = 117368, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Spear Hand Strike
