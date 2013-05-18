@@ -329,10 +329,6 @@ C["Filger_Spells"] = {
 			Size = CdS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Water Elemental Freeze
-			--{ spellID = 33395, filter = "CD" },
-			-- Blast Wave
-			--{ spellID = 11113, filter = "CD" },
 			-- Cauterize
 			{ spellID = 87023, filter = "ICD", trigger = "DEBUFF", duration = 120 },
 		},	
@@ -513,8 +509,6 @@ C["Filger_Spells"] = {
 
 			-- Mass Dispel
 			{ spellID = 32375, filter = "CD" },
-			-- Power Word: Barrier
-			{ spellID = 62618, filter = "CD" },
 			-- Purify
 			{ spellID = 527, filter = "CD" },
 		},
@@ -845,14 +839,6 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Displacer Beast
-			{ spellID = 102280, filter = "CD", absID = true },
-			-- Wild Charge
-			{ spellID = 102401, filter = "CD", absID = true },
-			-- Starsurge
-			{ spellID = 78674, filter = "CD" },
-			-- Starfall
-			--{ spellID = 48505, filter = "CD" },
 			-- Nature's Cure
 			{ spellID = 88423, filter = "CD" },
 		},
@@ -1037,16 +1023,9 @@ C["Filger_Spells"] = {
 			Size = CdS,
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 
-			-- Kill Shot
-			--{ spellID = 53351, filter = "CD" },
-			-- Chimera Shot
-			--{ spellID = 53209, filter = "CD" },
-			-- Rapid Fire
-			--{ spellID = 3045, filter = "CD" },
+
 			-- Feign Death
 			{ spellID = 5384, filter = "CD" },
-			-- Bestial Wrath
-			--{ spellID = 19574, filter = "CD" },
 		},
 		{
 			Name = "Hunter Buffs",
@@ -1166,8 +1145,6 @@ C["Filger_Spells"] = {
 
 			-- Shiv
 			{ spellID = 5938, filter = "CD" },
-			-- ShadowStep
-			{ spellID = 36554, filter = "CD" },
 			-- Cheating Death ICD
 			{ spellID = 45182, filter = "ICD", trigger = "BUFF", duration = 90 },
 		},
@@ -1298,7 +1275,7 @@ C["Filger_Spells"] = {
 			-- Debilitating Poison
 			{ spellID = 115196, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Wound Poison
-			{ spellID = 8680, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 8680, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Find Weakness
 			{ spellID = 91023, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Hemorrhage 
@@ -1499,7 +1476,7 @@ C["Filger_Spells"] = {
 			-- Inquisition
 			{ spellID = 84963, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Long Arm of the Law
-			{ spellID = 87173, unitId = "player", caster = "all", filter = "BUFF" },
+			--{ spellID = 87173, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Divine Favor
 			{ spellID = 31842, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Divine Plea
@@ -1615,8 +1592,6 @@ C["Filger_Spells"] = {
 			Size = CdS, 
 			setPoint = { "BOTTOMLEFT", "iFilgerCooldowns", 0, 22 },
 			
-			-- Last Stand
-			{ spellID = 12975, filter = "CD" },	
 			-- Taunt
 			{ spellID = 355, filter = "CD" },	
 			-- Commanding Shout
@@ -1751,24 +1726,26 @@ C["Filger_Spells"] = {
 			Size = PBS,
 			setPoint = { "BOTTOMRIGHT", "iFilgerPlayerBuff", 0, 22 },
 			
-			-- Death Note
-			{ spellID = 121125, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Spinning Crane Kick
+			{ spellID = 101546, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Touch of Karma
+			{ spellID = 125174, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Fortifying Brew
 			{ spellID = 120954, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tiger Power
 			{ spellID = 125359, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Path of Blossoms
 			{ spellID = 124336, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Spinning Crane Kick
-			{ spellID = 101546, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Zen Meditation
 			{ spellID = 131523, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Energizing Brew
 			{ spellID = 115288, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tigereye Brew
-			{ spellID = 125195, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Tigereye Brew (burst)
+			{ spellID = 116740, unitId = "player", caster = "player", filter = "BUFF", absID = true },
+			-- Tigereye Brew (stack)
+			{ spellID = 125195, unitId = "player", caster = "player", filter = "BUFF", absID = true },
 			-- Tiger Strikes
-			{ spellID = 120273, unitId = "player", caster = "player", filter = "BUFF" },
+			--{ spellID = 120273, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "Target Buffs and Debuffs",
@@ -1781,6 +1758,8 @@ C["Filger_Spells"] = {
 			Size = PTDBS,
 			setPoint = { "BOTTOMLEFT", "iFilgerBuffDebuff", 0, 22 },
 			
+			-- Death Note
+			{ spellID = 121125, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Leg Sweep
 			{ spellID = 119381, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Paralysis
@@ -1793,40 +1772,7 @@ C["Filger_Spells"] = {
 -------------------------------------------------------------	
 -- Credits to Sapz
 -------------------------------------------------------------	
-	["HUNTER/DRUID/ROGUE"] = {  ---------------------------------------------------- Hunt & Drood
-		{
-			Name = "Shivable Rage effects",
-			Enable = false,
-			Direction = "UP",
-			IconSide = "LEFT",
-			Interval = 4,
-			Mode = "ICON",
-			Alpha = 1,
-			Size = 40,
-			setPoint = { "BOTTOM", "iFilgerRage", "BOTTOM", 0, 22 },
 
-			-------------------
-			-- Filger Enrage Shiveable stuff  -
-			-------------------
-
-			-- Unholy Frenzy
-			{ spellID = 49016, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Vengeance
-			{ spellID = 76691, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Enrage
-			{ spellID = 5229, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Savage Roar
-			{ spellID = 52610, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Owlkin Frenzy
-			{ spellID = 48391, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Berserker Rage
-			{ spellID = 18499, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Death Wish
-			{ spellID = 12292, unitId = "target", caster = "all", filter = "BUFF" },
-			-- Bastion of Defense
-			{ spellID = 84608, unitId = "target", caster = "all", filter = "BUFF" },
-		},
-	},
 -------------------------------------------------------------	
 -- dont touch anything below or else ill ass rape you aight!
 -------------------------------------------------------------	
@@ -1932,6 +1878,8 @@ C["Filger_Spells"] = {
 			{ spellID = 126597, unitId = "player", caster = "player", filter = "BUFF" },
 
 			-- Physical Strength DPS
+			-- Brutal Talisman of the Shado-Pan Assault (Strength, Proc)
+			{ spellID = 138702, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Helmbreaker Medallion (Crit, Use)
 			{ spellID = 136084, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Darkmist Vortex (Haste, Proc)
@@ -1944,6 +1892,8 @@ C["Filger_Spells"] = {
 			{ spellID = 129812, unitId = "player", caster = "player", filter = "BUFF" },
 			
 			-- Physical Agility DPS
+			-- Vicious Talisman of the Shado-Pan Assault (Agility, Proc)
+			{ spellID = 138699, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Arrowflight Medallion (Crit, Use)
 			{ spellID = 136086, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Terror in the Mists (Crit, Proc)
@@ -1963,6 +1913,10 @@ C["Filger_Spells"] = {
 			{ spellID = 126659, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Light of the Cosmos (Intellect, Proc)
 			{ spellID = 126577, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Volatile Talisman of the Shado-Pan Assault
+			{ spellID = 138703, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Cha-Ye's Essence of Brilliance
+			{ spellID = 139133, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Caster Heal
 			-- Qin-xi's Polarizing Seal (Intellect, Proc)
 			{ spellID = 126588, unitId = "player", caster = "player", filter = "BUFF" },
@@ -2107,7 +2061,8 @@ C["Filger_Spells"] = {
 			--{ spellID = 57934, filter = "ICD", trigger = "BUFF", duration = 30 },
 			-- Dreadful Gladiator's Insignia of Victory
 			{ spellID = 126700, filter = "ICD", trigger = "BUFF", duration = 50 },
-
+			-- Vicious Talisman of the Shado-Pan Assault
+			{ spellID = 138699, filter = "ICD", trigger = "BUFF", duration = 105 },
 --			{ spellID = 74241, filter = "ICD", trigger = "BUFF", duration = 45, slotID = 16 }, -- if slotID not specified, spellID is used as icon
 		},
 	},
@@ -2528,9 +2483,9 @@ C["Filger_Spells"] = {
 			{ spellID = 50259, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			
 			-- Druid Symbiosis --
-			-- Intimidating Roar [Fleeing in fear] (Warrior)
+			-- Intimidating Roar (Fleeing in fear) (Warrior)
 			{ spellID = 113004, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
-			-- Intimidating Roar [Cowering in fear] (Warrior)
+			-- Intimidating Roar (Cowering in fear) (Warrior)
 			{ spellID = 113056, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
 			-- Grapple Weapon (Monk)
 			--{ spellID = 126458, unitId = "player", caster = "all", filter = "DEBUFF", absID = true },
@@ -2697,7 +2652,7 @@ C["Filger_Spells"] = {
 			
 			-- Monk --
 			--Breath of Fire (Glyph of Breath of Fire)
-			{ spellID = 123393, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 123393, unitId = "player", caster = "all", filter = "DEBUFF", absID = true  },
 			--Clash
 			{ spellID = 126451, unitId = "player", caster = "all", filter = "DEBUFF" },
 			--Charging Ox Wave
@@ -2749,7 +2704,7 @@ C["Filger_Spells"] = {
 			Size = PDBS,
 			setPoint = {  "BOTTOM", "iFilgerPlayerDebuffs" ,0,22 },
 			
-			-- [[ OUTDOOR BOSSES ]] --
+			--  OUTDOOR BOSSES  --
 			-- Sha of Anger
 			--Seethe
 			{ spellID = 119487, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -2758,12 +2713,12 @@ C["Filger_Spells"] = {
 			-- Unleashed Wrath
 			{ spellID = 119488, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
-			--Salys's Warband
+			--[[Salys's Warband
 			-- Stomp
 			{ spellID = 121787, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			
-			-- [[ HEART OF FEAR ]] --
+			--  HEART OF FEAR  --
 			-- Imperial Vizier Zor'lok
 			-- Exhale
 			{ spellID = 122761, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -2816,7 +2771,7 @@ C["Filger_Spells"] = {
 			-- Heart of Fear
 			{ spellID = 123845, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
-			-- [[ MOGU'SHAN VAULTS ]] --
+			--  MOGU'SHAN VAULTS  --
 			-- The Stone Guard
 			-- Amethyst Pool
 			{ spellID = 116235, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -2863,7 +2818,7 @@ C["Filger_Spells"] = {
 			-- Focused Energy
 			{ spellID = 116829, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
-			-- [[ TERRACE OF ENDLESS SPRING ]] --
+			--  TERRACE OF ENDLESS SPRING  --
 			-- Protector of the Endless
 			-- Defiled Ground
 			{ spellID = 117986, unitId = "player", caster = "all", filter = "DEBUFF" },
@@ -2884,7 +2839,7 @@ C["Filger_Spells"] = {
 			-- Spray
 			{ spellID = 123121, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Scary Fog
-			{ spellID = 123705, unitId = "player", caster = "all", filter = "DEBUFF" },
+			{ spellID = 123705, unitId = "player", caster = "all", filter = "DEBUFF" },]]
 		},
 		{
 			-- Here we track pvp debuffs on target
